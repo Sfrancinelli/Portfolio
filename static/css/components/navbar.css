@@ -75,13 +75,13 @@ nav {
 
 
 .branding img {
-  width: 50px;
+  width: 100px;
   transition: 0.5s ease all
 }
 
 .branding p {
   padding: 0;
-  margin: 0 16px;
+  margin: 0;
   font-size: 21px;
   font-weight: 500;
   transition: 0.5s ease all;
