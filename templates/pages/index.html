@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+ <title>CENS 451 | Inicio </title>
+{% endblock %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}?v={% now 'U'%}">
+{% endblock %}
+
+{% block header %}
+    {% include 'components/navbar.html' %}
+    {% include 'components/banner.html' %}
+{% endblock %}
+
+
+{% block main %}
+    <main class="container-fluid">
+
+        {% comment %} Educative offers {% endcomment %}
+        <section class="py-5" id="features">
+            <div class="container px-5 my-5">
+                <div class="row gx-5">
+                    <div class="col-lg-4 mb-5 mb-lg-0"><h2 class="fw-bolder mb-0">
+                        Conocé nuestras distintas ofertas para la finalización de tus estudios secundarios 
+                    </h2></div>
+                    <div class="col-lg-8">
+                        <div class="row gx-5 row-cols-1 row-cols-md-2">
+                            <a class="col mb-5 h-100 tag-offers" href="#" >
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="fa-solid fa-school"></i></div>
+                                <h2 class="h5">Modalidad CENS</h2>
+                                <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+                            </a>
+                            {% comment %} <div class="col mb-5 h-100">
+                                
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building-fill"></i></div>
+                                <h2 class="h5">Plan Fines</h2>
+                                <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+                                
+                            </div> {% endcomment %}
+                            <a class="col mb-5 h-100 tag-offers" href="#">
+                                
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building-fill"></i></div>
+                                <h2 class="h5">Plan Fines</h2>
+                                <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+                                
+                            </a> 
+
+                            <a class="col h-100 tag-offers"  href="">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="fa-solid fa-laptop"></i></div>
+                                <h2 class="h5">Educación a distancia</h2>
+                                <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+                            </a>
+                            <a class="col mb-5 mb-md-0 h-100 tag-offers" href="">
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="fa-solid fa-graduation-cap"></i></div>
+                                <h2 class="h5">Deudores de materias</h2>
+                                <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {% comment %} Blog news section {% endcomment %}
+        <section class="py-5 bg-light">
+            <div class="container px-5 my-5">
+                <div class="row gx-5 justify-content-center">
+                    <div class="col-lg-8 col-xl-6">
+                        <div class="text-center">
+                            <h2 class="fw-bolder">Noticias</h2>
+                            <p class="lead fw-normal text-muted mb-5">Aquí podrás leer las nuevas
+                                noticias y novedades 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% comment %} Acá iban las noticias {% endcomment %}
+                {% comment %} <div class="row gx-5">
+                    {% for noticia in noticias  %}
+                        {% include 'components/card_noticia.html' %}
+                    {% endfor %}
+                </div> {% endcomment %}
+            </div>
+        </section>
+
+        {% comment %}  Sede {% endcomment %}
+        <section class="py-5" id="scroll-target">
+            <div class="container px-5 my-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" src="{% static 'img/foto_cens_451_sede.png'%}" alt="Foto CENS 451 Sede" /></div>
+                    <div class="col-lg-6">
+                        <h2 class="fw-bolder">Sede principal - E.P. N° 13</h2>
+                        <p class="lead fw-normal text-muted mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto est, ut esse a labore aliquam beatae expedita. Blanditiis impedit numquam libero molestiae et fugit cupiditate, quibusdam expedita, maiores eaque quisquam.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {% comment %} Anexo {% endcomment %}
+        <section class="py-5 bg-light">
+            <div class="container px-5 my-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="{% static 'img/foto_cens_451_anexo.png'%}" alt="Foto CENS 451 Anexo" /></div>
+                    <div class="col-lg-6">
+                        <h2 class="fw-bolder">Anexo - E.P. N° 2 (El Gauchito)</h2>
+                        <p class="lead fw-normal text-muted mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto est, ut esse a labore aliquam beatae expedita. Blanditiis impedit numquam libero molestiae et fugit cupiditate, quibusdam expedita, maiores eaque quisquam.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        
+
+        
+
+    </main>
+    
+    
+{% endblock %}
