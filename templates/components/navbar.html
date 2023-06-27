@@ -23,7 +23,7 @@
         {% if perms.administracion.administrador %}
         <li><a href="{% url 'inicio_administracion' %}">Administración</a></li>
         {% endif %}
-        <li><a href="#">About</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
         <li><a href="#">Contacto</a></li>
         {% if user.is_authenticated %}
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
