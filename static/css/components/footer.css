@@ -1,0 +1,13 @@
+#contact a {
+    color: var(--main-white-color);
+    transition: 0.5s ease all;
+    padding-bottom: 6px;
+    border-bottom: 1px solid transparent;
+    text-decoration: none;
+    
+  }
+
+#contact a:hover {
+    color: var(--link-hover-blue-color) !important;
+    border-bottom: 1px solid var(--link-hover-blue-color) !important;
+  }
