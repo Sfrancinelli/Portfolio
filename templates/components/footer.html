@@ -4,7 +4,7 @@
 <head>
   <link rel="stylesheet" href="{% static 'css/components/footer.css' %}">
 </head>
-<footer class="text-white text-center text-lg-start bg-dark bg-gradient">
+{% comment %} <footer class="text-white text-center text-lg-start bg-dark bg-gradient">
   <div class="container py-5">
     <!--Grid row-->
     <div class="row justify-content-center">
@@ -59,4 +59,32 @@
   </div>
   <!-- Copyright -->
 </div>
+</footer> {% endcomment %}
+
+<footer class="bg-dark text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-4 pb-0">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <a class="btn btn-outline-light btn-floating m-1" href="mailto:sebastianfrancinelli00@gmail.com" target="_blank" role="button"
+        ><i class="fas fa-envelope"></i
+      ></a>
+
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/in/sebastian-francinelli-135a01244/" target="_blank" role="button"
+        ><i class="fab fa-linkedin-in"></i
+      ></a>
+
+      <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/Sfrancinelli" target="_blank" role="button"
+        ><i class="fab fa-github"></i
+      ></a>
+    </section>
+  </div>
+
+  <div class="container p-0 pb-0 mb-2">
+    <span><i class="fab fa-whatsapp"></i></span><span class="ms-2">11-3704-2581</span>
+  </div>
+
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2023 Sebastián Francinelli
+  </div>
 </footer>
