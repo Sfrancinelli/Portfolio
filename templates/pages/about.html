@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+ <title>About me</title>
+{% endblock %}
+
+{% block header %}
+    {% include 'components/navbar.html' %}
+    {% include 'components/banner.html' %}
+{% endblock %}
+
+
+{% block main %}
+<main class="container-fluid">
+    <section class="py-2" >
+        <div class="container px-5">
+            <h1 class="display-4 py-3 d-flex justify-content-center">Información sobre mi</h1>
+            <div class="d-flex flex-column px-5 py-2">
+
+                <p class="text-start">
+                    Soy <b>Sebastián Francinelli</b>. Comencé a estudiar programación a principios del 2022 de manera autodidacta sin muchas esperanzas al respecto. Jamás imaginé que en el proceso terminaría por descubrir una nueva pasión.
+                </p> 
+                <p class="text-start">
+                    Al principio aprender a programar puede resultar un poco abrumador. Todos los caminos llevan a lugares distintos y nueva información por descubrir.    
+                </p>
+        
+                <p class="text-start">
+                    Lo importante es seguir, de a poco, explorando las diferentes características que componen el destino al que se quiere llegar. Programar todos los días, repasar sintaxis, hacer ejercicios e ingenería inversa son algunas de las cosas que me sirvieron para ir entrenando la capacidad de pensar en código. De poder llevar problemas reales al ámbito de la programación.
+                </p>
+
+                <p class="text-start">
+                   Es importante destacar que no me considero un experto en la materia, de hecho, creo que nadie puede considerarse de tal forma en este universo que evoluciona constantemente. Lo que si puedo asegurar es que me sigo y seguiré capacitando para obtener cada vez resultados mejores y alzar la vara de expectativas cada vez más.
+                </p>
+
+                <p class="text-start">
+                    Considero que mi proacción, mi dinamismo, inteligencia y capacidades podrían ayudar a cualquier empresa que confíe en mí y me de un lugar entre los suyos.
+                </p>
+
+                <p class="text-start">
+                    Al día de la fecha estoy trabajando en la <b>Secretaría de Planificación, Evaluación y Coordinación de Gestión del Gobierno de la Ciudad de Buenos Aires.</b>
+                </p>
+
+                <p class="text-start">
+                    Esta página es una pequeña muestra de mis capacidades como desarrollador web. Está desarrollada con el Framework de Django, BBDD en PostgreSQL y como en casi todo desarrollo web, CSS y JS. En la página podrán ver distintos proyectos de los cursos que voy realizando.
+                </p>
+
+                <p class="text-start">
+                    Para cerrar esta sección sobre mí, me gustaría recordar que estoy abierto para ser contratado como programador, para ganar experiencia en el rubro y finalmente, poder trabajar de esto que amo y tanto me gusta.
+                </p>
+            </div>
+        </div> 
+    </section>
+</main>
+
+{% endblock %}

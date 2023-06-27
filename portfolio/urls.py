@@ -21,5 +21,6 @@ from portfolio import views as p_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', p_views.index, name='index')
+    path('', p_views.index, name='index'),
+    path('about/', p_views.about, name='about')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

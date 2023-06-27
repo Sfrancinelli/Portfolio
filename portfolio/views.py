@@ -13,3 +13,7 @@ from django.contrib.auth.models import AnonymousUser
 
 def index(request):
     return render(request, 'pages/index.html', {'title': 'Title'})
+
+
+def about(request):
+    return render(request, 'pages/about.html', {'title': 'Información'})
