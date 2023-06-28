@@ -22,6 +22,8 @@ def about(request):
 
 
 def contact(request):
+    form = ContactForm()
+
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -48,10 +50,7 @@ def contact(request):
                 return redirect('index')
 
         else:
-            print(form.errors)
-    else:
-        form = ContactForm()
-        context = {'form': form, 'title': 'Contactame!'}
-        return render(request, 'pages/contact.html', context)
+            messages.warning(request, 'Por favor revise los datos!')
 
+    context = {'form': form, 'title': 'Contactame!'}
     return render(request, 'pages/contact.html', context)
