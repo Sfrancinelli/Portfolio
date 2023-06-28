@@ -9,8 +9,8 @@ def validate_nombres(value):
         raise ValidationError('El nombre debe tener al menos 4 caracteres')
     if len(value) > 155:
         raise ValidationError('El nombre no puede tener más de 155 caracteres')
-    if not value.isalpha():
-        raise ValidationError('El nombre solo debe contener letras')
+    if not re.match(r'^[a-zA-Z\s]+$', value):
+        raise ValidationError('El nombre solo debe contener letras y espacios')
 
 
 def validate_email(value):
