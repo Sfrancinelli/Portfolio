@@ -22,7 +22,7 @@ def about(request):
 
 
 def contact(request):
-    if request.method = 'POST':
+    if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
 
@@ -38,7 +38,7 @@ def contact(request):
                 form.save()
 
                 subject = f'Contacto de {name} de la empresa {company}'
-                message = f'La persona {name} de la empresa {company} ha enviado un mensaje de contacto:\n{mensaje}\nPara responder este mensaje comuniquese vía: {email}'
+                message = f'La persona {name} de la empresa {company} ha enviado un mensaje de contacto:\n{mensaje}\nPara responder este mensaje comuníquese vía: {email}'
                 from_email = 'programacion101200@gmail.com'
                 recipient_list = ['seebaapa@gmail.com']
                 send_mail(subject, message, from_email, recipient_list, fail_silently=False)
@@ -48,15 +48,9 @@ def contact(request):
                 return redirect('index')
 
         else:
-                print(form.errors)
+            print(form.errors)
     else:
         context = {'form': form}
         return render(request, 'pages/contact.html', context)
-    else:
-        form = ContactForm()
-        conext = {'form': form}
-
-        return render(request, 'pages/contact.html', context)
-            
 
     return render(request, 'pages/contact.html', context)
