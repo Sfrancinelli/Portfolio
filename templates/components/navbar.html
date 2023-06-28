@@ -51,10 +51,9 @@
 
       <div id="navMobileId">
         <ul>
-            <li><a class="link" href="{% url 'index' %}">Inicio</a></li>
-            <li><a class="link" href="#">Proyectos</a></li>
-            <li><a class="link" href="#">About</a></li>
-            <li><a class="link" href="#">Contacto</a></li>
+            <li><a class="link" href="{% url 'index' %}">Proyectos</a></li>
+            <li><a class="link" href="{% url 'about' %}">About</a></li>
+            <li><a class="link" href="{% url 'contact' %}">Contacto</a></li>
             {% if perms.administracion.administrador %}
             <li><a href="{% url 'inicio_administracion' %}">Administración</a></li>
             {% endif %}
