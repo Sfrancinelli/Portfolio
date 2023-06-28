@@ -3,10 +3,10 @@ from django.db import models
 
 # Create your models here.
 class Project(models.Model):
-    title = models.CharField(max_length=100)
-    description = models.TextField()
-    image = models.ImageField(upload_to='project_images/')
-    created_at = models.DateTimeField(auto_now_add=True)
+    title = models.CharField(max_length=100, verbose_name='Título')
+    description = models.TextField(max_length=255, verbose_name='Descripción')
+    image = models.ImageField(upload_to='project_images/', blank=True, verbose_name='Imágen')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Creado')
 
     class Meta:
         verbose_name = "Proyectos"
@@ -17,7 +17,7 @@ class Project(models.Model):
 
 
 class Tag(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, verbose_name='Etiqueta')
 
     class Meta:
         verbose_name = "Etiquetas"
@@ -28,8 +28,8 @@ class Tag(models.Model):
 
 
 class ProjectTag(models.Model):
-    project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, verbose_name='Proyecto')
+    tag = models.ForeignKey(Tag, on_delete=models.CASCADE, verbose_name='Etiqueta')
 
     def __str__(self):
         return f"{self.project.title} - {self.tag.name}"
