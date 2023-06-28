@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+ <title>Contacto</title>
+{% endblock %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}?v={% now 'U'%}">
+{% endblock %}
+
+{% block header %}
+    {% include 'components/navbar.html' %}
+    {% include 'components/banner.html' %}
+{% endblock %}
+
+
+{% block main %}
+    <main id='main-cont' class="container-fluid main-container">
+
+    </main>
+{% endblock %}
