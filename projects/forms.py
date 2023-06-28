@@ -32,8 +32,9 @@ class ContactForm(forms.ModelForm):
         error_messages={'required': 'El nombre no puede quedar vacío'},
         widget=forms.TextInput(attrs={
             'class': 'form-control',
-            'id': 'name_form',
+            'id': 'name',
             'name': 'nombres',
+            'required': True,
             'placeholder': 'Nombre/s'
         }),
         validators=[validate_nombres]
@@ -44,9 +45,10 @@ class ContactForm(forms.ModelForm):
         required=False,
         widget=forms.TextInput(attrs={
             'class': 'form-control',
-            'id': 'company_form',
+            'id': 'company',
             'name': 'company',
-            'placeholder': 'Empresa'
+            'required': False,
+            'placeholder': 'Tu empresa'
         })
     )
 
@@ -56,7 +58,8 @@ class ContactForm(forms.ModelForm):
         required=True,
         widget=forms.EmailInput(attrs={
             'class': 'form-control',
-            'id': 'email_form',
+            'id': 'email',
+            'required': True,
             'placeholder': 'ejemplo@gmail.com',
             'name': 'email'
         }),
@@ -72,7 +75,8 @@ class ContactForm(forms.ModelForm):
             'class': 'form-control',
             'placeholder': 'Mensaje de contacto',
             'name': 'message',
-            'id': 'message_form',
+            'id': 'message',
+            'required': True,
             'rows': 3,
         })
     )
