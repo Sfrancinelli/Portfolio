@@ -40,7 +40,7 @@ def contact(request):
                 form.save()
 
                 subject = f'Contacto de {name} de la empresa {company}'
-                message = f'La persona {name} de la empresa {company} ha enviado un mensaje de contacto:\n{mensaje}\nPara responder este mensaje comuníquese vía: {email}'
+                message = f'La persona {name} de la empresa {company} ha enviado un mensaje de contacto:\n{mensaje}\nPara responder este mensaje comuníquese al mail "{email}"'
                 from_email = 'programacion101200@gmail.com'
                 recipient_list = ['seebaapa@gmail.com']
                 send_mail(subject, message, from_email, recipient_list, fail_silently=False)
