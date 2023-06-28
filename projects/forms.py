@@ -9,7 +9,7 @@ def validate_nombres(value):
         raise ValidationError('El nombre debe tener al menos 4 caracteres')
     if len(value) > 155:
         raise ValidationError('El nombre no puede tener más de 155 caracteres')
-    if not re.match(r'^[a-zA-Z\s]+$', value):
+    if not re.match(r'^[a-zA-Z\sáéíóúÁÉÍÓÚ]+$', value):
         raise ValidationError('El nombre solo debe contener letras y espacios')
 
 
