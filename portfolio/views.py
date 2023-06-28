@@ -50,7 +50,8 @@ def contact(request):
         else:
             print(form.errors)
     else:
-        context = {'form': form}
+        form = ContactForm()
+        context = {'form': form, 'title': 'Contactame!'}
         return render(request, 'pages/contact.html', context)
 
     return render(request, 'pages/contact.html', context)
