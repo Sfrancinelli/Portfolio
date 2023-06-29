@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="en">
-
+{% load static %}
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Modernize Free</title>
-  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
-  <link rel="stylesheet" href="../assets/css/styles.min.css" />
+  <title>Login</title>
+  <link rel="shortcut icon" type="image/png" href="{% static 'administracion/assets/images/logos/favicon.png' %}" />
+  <link rel="stylesheet" href="{% static 'administracion/assets/css/styles.min.css' %}" />
 </head>
 
 <body>
@@ -23,7 +23,7 @@
                 <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
                   <img src="../assets/images/logos/dark-logo.svg" width="180" alt="">
                 </a>
-                <p class="text-center">Your Social Campaigns</p>
+                <p class="text-center">¡Bienvenido/a!</p>
                 <form>
                   <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Username</label>
@@ -37,15 +37,15 @@
                     <div class="form-check">
                       <input class="form-check-input primary" type="checkbox" value="" id="flexCheckChecked" checked>
                       <label class="form-check-label text-dark" for="flexCheckChecked">
-                        Remeber this Device
+                        Recordarme
                       </label>
                     </div>
-                    <a class="text-primary fw-bold" href="./index.html">Forgot Password ?</a>
+                    <a class="text-primary fw-bold" href="./index.html">Olvidaste la contraseña ?</a>
                   </div>
                   <a href="./index.html" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign In</a>
                   <div class="d-flex align-items-center justify-content-center">
-                    <p class="fs-4 mb-0 fw-bold">New to Modernize?</p>
-                    <a class="text-primary fw-bold ms-2" href="./authentication-register.html">Create an account</a>
+                    <p class="fs-4 mb-0 fw-bold">No tenes una cuenta?</p>
+                    <a class="text-primary fw-bold ms-2" href="./authentication-register.html">Registrarse</a>
                   </div>
                 </form>
               </div>
@@ -55,8 +55,8 @@
       </div>
     </div>
   </div>
-  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{% static 'administracion/assets/libs/jquery/dist/jquery.min.js' %}"></script>
+  <script src="{% static 'administracion/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js'%}"></script>
 </body>
 
 </html>
