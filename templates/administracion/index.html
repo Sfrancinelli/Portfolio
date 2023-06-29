@@ -19,7 +19,7 @@
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
           <a href="{% url 'index_admin' %}" class="text-nowrap logo-img">
-            <img src="{% static 'administracion/assets/images/logos/dark-logo.svg' %}" width="180" alt="" />
+            <img src="{% static 'img/sf.svg' %}" width="150" alt="" />
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
@@ -89,7 +89,7 @@
               <span class="hide-menu">AUTH</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./authentication-login.html" aria-expanded="false">
+              <a class="sidebar-link" href="{% url 'login' %}" aria-expanded="false">
                 <span>
                   <i class="ti ti-login"></i>
                 </span>
