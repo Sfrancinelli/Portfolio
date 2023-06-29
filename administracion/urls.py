@@ -5,6 +5,7 @@ urlpatterns = [
 
     path('', views.index_administracion, name='index_admin'),
     path('login/', views.login, name="login"),
+    path('register/', views.register, name='register'),
     # path('orentacion/', views.orientacion_index, name='orientacion_index'),
     # path('orientacion/nuevo/', views.orientacion_nuevo, name='orientacion_nuevo'),
     # path('orientacion/editar/<int:id_orientacion>', views.orientacion_editar, name='orientacion_editar'),

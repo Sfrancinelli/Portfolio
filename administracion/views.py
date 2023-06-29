@@ -8,3 +8,7 @@ def index_administracion(request):
 
 def login(request):
     return render(request, 'administracion/authentication-login.html')
+
+
+def register(request):
+    return render(request, 'administracion/authentication-register.html')
