@@ -20,9 +20,11 @@
 
       <ul id="navId" class="navigation">
         <li><a href="{% url 'index' %}">Proyectos</a></li>
+        {% comment %} 
         {% if perms.administracion.administrador %}
         <li><a href="{% url 'inicio_administracion' %}">Administración</a></li>
-        {% endif %}
+        {% endif %} 
+        {% endcomment %}
         <li><a href="{% url 'about' %}">About</a></li>
         <li><a href="{% url 'contact' %}">Contacto</a></li>
         {% if user.is_authenticated %}
@@ -32,13 +34,13 @@
               <ul style='background-color: #11080C' class="dropdown-menu dropdown-menu-dark" id="navbarDropdown" aria-labelledby="navbarDropdown">
                   <li ><p class="dropdown-header" style='color: #FFFFFF' href="#!">{{ user.username }}</p></li>
                   <li ><hr class="dropdown-divider" /></li>
-                  <li ><a class="dropdown-item" style='color: #FFFFFF' href="#">Perfil</a></li>
-                  <li ><a class="dropdown-item" style='color: #FFFFFF' href="#">Logout</a></li>
+                  <li ><a class="dropdown-item" style='color: #FFFFFF' href="{% url 'profile' %}">Perfil</a></li>
+                  <li ><a class="dropdown-item" style='color: #FFFFFF' href="{% url 'logout' %}">Logout</a></li>
               </ul>
           </li>
         </ul>
         {% else %}
-        <li><a href="#">INGRESAR</a></li>
+        <li><a href="{% url 'login' %}">INGRESAR</a></li>
         {% endif %}
 
       </ul>
@@ -54,16 +56,18 @@
             <li><a class="link" href="{% url 'index' %}">Proyectos</a></li>
             <li><a class="link" href="{% url 'about' %}">About</a></li>
             <li><a class="link" href="{% url 'contact' %}">Contacto</a></li>
+            {% comment %} 
             {% if perms.administracion.administrador %}
             <li><a href="{% url 'inicio_administracion' %}">Administración</a></li>
-            {% endif %}
+            {% endif %} 
+            {% endcomment %}
             {% if user.is_authenticated %}
             <li ><a class="link" href="{% url 'profile' %}">Perfil</a></li>
             <a href="{% url 'logout' %}">
               <button type="button" class="btn btn-primary">Cerrar Sesión</button>
             </a>
             {% else %}
-            <a href="#">
+            <a href="{% url 'login' %}">
               <button type="button" class="btn btn-primary">Ingresar</button>
             </a>
             {% endif %}
