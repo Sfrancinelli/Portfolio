@@ -19,10 +19,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 from portfolio import views as p_views
 from administracion import views as a_views
+from administracion.admin import my_admin
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin_og/', admin.site.urls),
+    path('admin/', my_admin.urls),
     path('', p_views.index, name='index'),
+    path('projects/<int:id>/', p_views.projects),
     path('about/', p_views.about, name='about'),
     path('contact/', p_views.contact, name='contact'),
     path('administracion/', include('administracion.urls')),
