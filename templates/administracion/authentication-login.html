@@ -7,6 +7,7 @@
   <title>Login</title>
   <link rel="shortcut icon" type="image/png" href="{% static 'administracion/assets/images/logos/favicon.png' %}" />
   <link rel="stylesheet" href="{% static 'administracion/assets/css/styles.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'administracion/assets/css/sign.css' %}" />
 </head>
 
 <body>
@@ -24,14 +25,28 @@
                   <img src="{% static 'img/sf.svg' %}" width="150" alt="">
                 </a>
                 <p class="text-center">¡Bienvenido/a!</p>
-                <form>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }} text-center fs-4 text-primary fw-bold" {% endif %} >
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %} {% endif %}
+                        {{ message }}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <form method="POST" action="{% url 'login' %}">
+                  {% csrf_token %}
                   <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Username</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label for="exampleInputEmail1" class="form-label">Usuario</label>
+                    {{ form.user }}
                   </div>
                   <div class="mb-4">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                    {{ form.password }}
+                    <span  id="showPasswordBtn" class="show-password-button" onclick="togglePasswordVisibility()">
+                      <i class="fas fa-eye"></i>
+                    </span>
                   </div>
                   <div class="d-flex align-items-center justify-content-between mb-4">
                     <div class="form-check">
@@ -42,7 +57,7 @@
                     </div>
                     <a class="text-primary fw-bold" href="./index.html">Olvidaste la contraseña ?</a>
                   </div>
-                  <a href="./index.html" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Sign In</a>
+                  <input type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2" value="Ingresar" action="/login" method="POST" name="login">
                   <div class="d-flex align-items-center justify-content-center">
                     <p class="fs-4 mb-0 fw-bold">No tenes una cuenta?</p>
                     <a class="text-primary fw-bold ms-2" href="./authentication-register.html">Registrarse</a>
@@ -56,7 +71,8 @@
     </div>
   </div>
   <script src="{% static 'administracion/assets/libs/jquery/dist/jquery.min.js' %}"></script>
-  <script src="{% static 'administracion/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js'%}"></script>
+  <script src="{% static 'administracion/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'administracion/assets/js/sign.js' %}"></script>
 </body>
 
 </html>
