@@ -9,12 +9,18 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import AnonymousUser
-from projects.models import Contact
+from projects.models import Contact, Project, ProjectTag, Tag
 from projects.forms import ContactForm
 
 
 def index(request):
-    return render(request, 'pages/index.html', {'title': 'Title'})
+    projects = Project.objects.all()
+    return render(request, 'pages/index.html', {'title': 'Title', 'projects': projects})
+
+
+def projects(request, id):
+    project = Project.objects.get(id=id)
+    return render(request, 'pages/proyectos.html', {"project": project})
 
 
 def about(request):
