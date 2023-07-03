@@ -56,7 +56,7 @@ class SignUpForm(UserCreationForm):
     username = forms.CharField(
         widget=forms.TextInput(
             attrs={
-                'id': 'user',
+                'id': 'exampleInputtext1',
                 'class': 'form-control',
                 'placeholder': 'Usuario',
                 'minlength': '8',
@@ -69,7 +69,7 @@ class SignUpForm(UserCreationForm):
         validators=(check_email,),
         widget=forms.EmailInput(
             attrs={
-                'id': 'email',
+                'id': 'exampleInputEmail1',
                 'class': 'form-control',
                 'placeholder': 'Email',
                 'required': True,
@@ -83,7 +83,7 @@ class SignUpForm(UserCreationForm):
         validators=(validate_pass,),
         widget=forms.PasswordInput(
             attrs={
-                'id': 'password1',
+                'id': 'exampleInputPassword1',
                 'class': 'form-control',
                 'placeholder': 'Contraseña',
                 'required': True,
@@ -97,7 +97,7 @@ class SignUpForm(UserCreationForm):
         validators=(validate_pass,),
         widget=forms.PasswordInput(
             attrs={
-                'id': 'password2',
+                'id': 'exampleInputPassword2',
                 'class': 'form-control',
                 'placeholder': 'Repetir contraseña',
                 'required': True,

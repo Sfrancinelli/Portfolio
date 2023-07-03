@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from administracion.forms import SignUpForm, LoginForm, NewPassForm, VerifyCodeForm, ForgotPass
 from django.contrib import messages
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import logout, authenticate
+from django.contrib.auth import login as auth_login
+from django.http import HttpResponse
 
 
 # Create your views here.
@@ -17,7 +19,7 @@ def login(request):
             password = request.POST['password']
             user = authenticate(request, username=username, password=password)
             if user is not None:
-                login(request, user)
+                auth_login(request, user)
                 messages.success(request, f'Bienvenido/a {username}')
                 return redirect('index')
             else:
@@ -48,3 +50,7 @@ def register(request):
     else:
         context = {'form': SignUpForm()}
         return render(request, 'administracion/authentication-register.html', context)
+
+
+def profile(request):
+    return HttpResponse('Perfil')

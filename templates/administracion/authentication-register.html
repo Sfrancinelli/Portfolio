@@ -24,20 +24,35 @@
                   <img src="{% static 'img/sf.svg' %}" width="150" alt="">
                 </a>
                 <p class="text-center">¡Registrate!</p>
-                <form>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }} text-center fs-4 text-primary fw-bold" {% endif %} >
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %} {% endif %}
+                        {{ message }}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <form method="POST" action="{% url 'register' %}">
+                  {% csrf_token %}
                   <div class="mb-3">
-                    <label for="exampleInputtext1" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="exampleInputtext1" aria-describedby="textHelp">
+                    <label for="exampleInputtext1" class="form-label">Usuario</label>
+                    {{ form.username }}
                   </div>
                   <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    {{ form.email }}
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                    {{ form.password1 }}
                   </div>
                   <div class="mb-4">
-                    <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <label for="exampleInputPassword2" class="form-label">Repetir contraseña</label>
+                    {{ form.password2 }}
                   </div>
-                  <a href="{% url 'index' %}" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Registrarse</a>
+                  <input type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2" value="Registrarse" method="POST" name="register">
                   <div class="d-flex align-items-center justify-content-center">
                     <p class="fs-4 mb-0 fw-bold">Ya tenés una cuenta?</p>
                     <a class="text-primary fw-bold ms-2" href="{% url 'login' %}">Inicia sesión</a>
