@@ -89,12 +89,12 @@
                         </div>
                     </div>
                 </div>
-                {% comment %} Acá iban las noticias {% endcomment %}
-                {% comment %} <div class="row gx-5">
-                    {% for noticia in noticias  %}
-                        {% include 'components/card_noticia.html' %}
+
+                <div class="row gx-5">
+                    {% for project in projects  %}
+                        {% include 'components/card_proyecto.html' %}
                     {% endfor %}
-                </div> {% endcomment %}
+                </div>
             </div>
         </section>
 
