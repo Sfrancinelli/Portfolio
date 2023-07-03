@@ -10,7 +10,7 @@ def index_administracion(request):
 
 
 def login(request):
-    if request.methos == 'POST':
+    if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
             username = request.POST['user']

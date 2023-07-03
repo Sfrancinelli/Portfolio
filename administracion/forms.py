@@ -28,18 +28,18 @@ class LoginForm(forms.Form):
     user = forms.CharField(
         min_length=8,
         widget=forms.TextInput(attrs={
-            'class': 'input',
+            'class': 'form-control',
             'placeholder': 'Usuario',
-            'id': 'user'
+            'id': 'exampleInputEmail1'
         }),
         label=False
     )
     password = forms.CharField(
         validators=(validate_pass,),
         widget=forms.PasswordInput(attrs={
-            'class': 'input',
+            'class': 'form-control',
             'placeholder': 'Contraseña',
-            'id': 'password',
+            'id': 'exampleInputPassword1',
             'pattern': '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}',
             'title': 'La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula y un número.'
         }),
