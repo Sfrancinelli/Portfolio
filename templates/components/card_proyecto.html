@@ -12,16 +12,16 @@
                     {{project.title}}
                 </h5>
             </a>
-
             <p class="card-text mb-0 h-">
                     {{project.description}}
             </p>
+            <div class="text-center">
+                <img style='min-width: 120px;' class="rounded-circle my-3" src="{{ project.image.url }}" alt="Project Image" />
+            </div>
         </div>
         <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
             <div class="d-flex align-items-end justify-content-between">
                 <div class="d-flex align-items-center">
-                    {% comment %} Acá iría mi imagen {% endcomment %}
-                    {% comment %} <img class="rounded-circle me-3" src="media/project_images" alt="..." /> {% endcomment %}
                     <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
                     <div class="small">
                         <div class="fw-bold">Sebastián Francinelli</div>
