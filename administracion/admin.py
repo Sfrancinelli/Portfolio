@@ -13,17 +13,17 @@ class MyAdmin(admin.AdminSite):
 
 
 class ProjectsAdmin(admin.ModelAdmin):
-    list_display = ['title', 'description', 'image']
+    list_display = ['id', 'title', 'description', 'image']
     list_display_links = ('id', )
 
 
 class TagAdmin(admin.ModelAdmin):
-    list_display = ['name']
+    list_display = ['id', 'name']
     list_display_links = ('id', )
 
 
 class ProjectTagAdmin(admin.ModelAdmin):
-    list_display = ['project', 'tag']
+    list_display = ['id', 'project', 'tag']
     list_display_links = ('id', )
 
 
