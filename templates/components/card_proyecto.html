@@ -1,9 +1,9 @@
 {% load static %}
-<div class="col-lg-4 mb-5" style="min-height: 350px;">
+<div class="col-lg-6 mb-5" style="min-height: 350px;">
     <div class="card h-100 shadow border-0">
         {% comment %} <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." /> {% endcomment %}
 
-        <div class="card-body p-4">
+        <div class="card-body p-6">
             {% for projecttag in project.projecttag_set.all %}
             <div class="badge bg-primary bg-gradient rounded-pill mb-2">
                 {{ projecttag.tag.name }}
@@ -14,11 +14,11 @@
                     {{project.title}}
                 </h5>
             </a>
-            <p class="card-text mb-0 h-">
-                    {{project.description}}
+            <p class="card-text mb-1">
+                    {{project.description | truncatewords:15 }} <i class='text-primary'>ver más</i>
             </p>
             <div class="text-center">
-                <img style='min-width: 120px;' class="rounded-circle my-3" src="{{ project.image.url }}" alt="Project Image" />
+                <img style='width: 200px; border-radius:10px;' class="my-4" src="{{ project.image.url }}" alt="Project Image" />
             </div>
         </div>
         <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
