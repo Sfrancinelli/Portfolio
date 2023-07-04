@@ -1,0 +1,34 @@
+#imgCard {
+    min-width: 200px;
+    max-width: 300px;
+}
+
+@media(min-width: 768px) {
+    #imgCard {
+        min-width: 350px;
+    }
+
+    #cardContainer {
+        min-height: 250px;
+    }
+}
+
+@media(min-width: 992px) {
+    #imgCard {
+        min-width: 260px;
+    }
+
+    #cardContainer {
+        min-height: 240px;
+    }
+}
+
+@media(min-width: 1200px) {
+    #imgCard {
+        min-width: 350px;
+    }
+
+    #cardContainer {
+        min-height: 330px;
+    }
+}
