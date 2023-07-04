@@ -3,17 +3,16 @@
 
 {% block title %}
  <title>Proyectos</title>
-{% endblock %}
+{% endblock title %}
 
-{% comment %} 
 {% block link %}
     <link rel="stylesheet" href="{% static 'css/components/contact.css' %}?v={% now 'U' %}">
-{% endblock %} 
-{% endcomment %}
+{% endblock link %}
+
 
 {% block header %}
     {% include 'components/navbar.html' %}
-{% endblock %}
+{% endblock header %}
 
 
 {% block main %}
@@ -89,4 +88,4 @@
         </div>
     </div>
 </div>
-{% endblock %}
+{% endblock main %}
