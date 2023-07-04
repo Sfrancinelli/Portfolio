@@ -4,7 +4,7 @@ from django.db import models
 # Create your models here.
 class Project(models.Model):
     title = models.CharField(max_length=100, verbose_name='Título')
-    description = models.TextField(max_length=255, verbose_name='Descripción')
+    description = models.TextField(max_length=1050, verbose_name='Descripción')
     image = models.ImageField(upload_to='project_images/', blank=True, verbose_name='Imágen')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Creado')
 
