@@ -1,0 +1,90 @@
+{% load bootstrap5 %}
+{% load static %}
+
+<head>
+  <link rel="stylesheet" href="{% static 'css/components/footer.css' %}">
+</head>
+{% comment %} <footer class="text-white text-center text-lg-start bg-dark bg-gradient">
+  <div class="container py-5">
+    <!--Grid row-->
+    <div class="row justify-content-center">
+      <!--Grid column-->
+      <div class="col-lg-4 col-md-6 col-xs-12 mb-4 mb-md-0 align-self-center">
+        <h5 style="margin-left: 1.45em;" class="text-uppercase text-center mt-lg-3 mb-4 pb-1">Contacto</h5>
+        <!--
+        <div class="form-outline form-white mb-4">
+          <input type="text" id="formControlLg" class="form-control form-control-lg">
+          <label class="form-label" for="formControlLg" style="margin-left: 0px;">Search</label>
+        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 48.8px;"></div><div class="form-notch-trailing"></div></div></div> -->
+
+        <ul id='contact' class="fa-ul" style="margin-left: 1.5em;">
+          <li class="mb-3 text-center">
+            <a style='text-decoration: none; color:#FFFFFF' href="https://github.com/Sfrancinelli"><span class="fa-li"><i class="fa-brands fa-github"></i></span><span class="ms-2">Perfil de GitHub</span></a>
+          </li>
+          <li class="mb-3 text-center">
+            <a style='text-decoration: none; color:#FFFFFF' href="https://www.linkedin.com/in/sebastian-francinelli-135a01244/"><span class="fa-li"><i class="fa-brands fa-linkedin"></i></span><span class="ms-2">Perfil de LinkedIn</span></a>
+          </li>
+          <li class="mb-3 text-center">
+            <a href="mailto:sebastianfrancinelli00@gmail.com"><span class="fa-li"><i class="fas fa-envelope"></i></span><span class="ms-2">sebastianfrancinelli00@gmail.com</span></a>
+          </li>
+          <li class="mb-3 text-center">
+            <span class="fa-li"><i class="fa-brands fa-whatsapp"></i></span><span class="ms-2">11-3704-2581</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-lg-8 col-md-6 col-xs-12 mb-4 mb-md-0 align-self-center">
+        <h5 id='about' class="text-uppercase mb-4 sm-mt-2 mt-md-4 mt-lg-0 ml-sm-2 text-center">Sobre Mi</h5>
+
+        <p class="text-center">
+          At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+          voluptatum deleniti atque corrupti.
+        </p>
+
+        <p class="text-center">
+          Blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas
+          molestias.
+        </p>
+
+      </div>
+    </div>
+
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2023 Copyright
+    <a class="text-white" href="mailto:sebastianfrancinelli00@gmail.com">Sebastián Francinelli</a>
+  </div>
+  <!-- Copyright -->
+</div>
+</footer> {% endcomment %}
+
+<footer class="bg-dark text-center text-white">
+  <!-- Grid container -->
+  <div class="container p-4 pb-0">
+    <!-- Section: Social media -->
+    <section class="mb-4">
+      <a class="btn btn-outline-light btn-floating m-1" href="mailto:sebastianfrancinelli00@gmail.com" target="_blank" role="button"
+        ><i class="fas fa-envelope"></i
+      ></a>
+
+      <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/in/sebastian-francinelli-135a01244/" target="_blank" role="button"
+        ><i class="fab fa-linkedin-in"></i
+      ></a>
+
+      <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/Sfrancinelli" target="_blank" role="button"
+        ><i class="fab fa-github"></i
+      ></a>
+    </section>
+  </div>
+
+  <div class="container p-0 pb-0 mb-2">
+    <span><i class="fab fa-whatsapp"></i></span><span class="ms-2">11-3704-2581</span>
+  </div>
+
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2023 Sebastián Francinelli
+  </div>
+</footer>

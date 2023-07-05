@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modernize Free</title>
+  <link rel="shortcut icon" type="image/png" href="'{% static 'administracion/assets/images/logos/favicon.png' %}'" />
+  <link rel="stylesheet" href="{% static 'administracion/assets/css/styles.min.css' %}" />
+</head>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <div
+      class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
+      <div class="d-flex align-items-center justify-content-center w-100">
+        <div class="row justify-content-center w-100">
+          <div class="col-md-8 col-lg-6 col-xxl-3">
+            <div class="card mb-0">
+              <div class="card-body">
+                <a href="{% url 'index' %}" class="text-nowrap logo-img text-center d-block py-3 w-100">
+                  <img src="{% static 'img/sf.svg' %}" width="150" alt="">
+                </a>
+                <p class="text-center">¡Registrate!</p>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li {% if message.tags %} class="{{ message.tags }} text-center fs-4 text-primary fw-bold" {% endif %} >
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %} {% endif %}
+                        {{ message }}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <form method="POST" action="{% url 'register' %}">
+                  {% csrf_token %}
+                  <div class="mb-3">
+                    <label for="exampleInputtext1" class="form-label">Usuario</label>
+                    {{ form.username }}
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email</label>
+                    {{ form.email }}
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                    {{ form.password1 }}
+                  </div>
+                  <div class="mb-4">
+                    <label for="exampleInputPassword2" class="form-label">Repetir contraseña</label>
+                    {{ form.password2 }}
+                  </div>
+                  <input type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2" value="Registrarse" method="POST" name="register">
+                  <div class="d-flex align-items-center justify-content-center">
+                    <p class="fs-4 mb-0 fw-bold">Ya tenés una cuenta?</p>
+                    <a class="text-primary fw-bold ms-2" href="{% url 'login' %}">Inicia sesión</a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src=".{% static 'administracion/assets/libs/jquery/dist/jquery.min.js' %}"></script>
+  <script src="{% static 'administracion/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+
+</html>

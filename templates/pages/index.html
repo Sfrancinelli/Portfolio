@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+ <title>Portfolio</title>
+{% endblock %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}?v={% now 'U'%}">
+{% endblock %}
+
+{% block header %}
+    {% include 'components/navbar.html' %}
+    {% include 'components/banner.html' %}
+{% endblock %}
+
+
+{% block main %}
+
+<div class="row text-center">
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" role="alert">
+                {{message}}
+        </div>
+    {% endfor %}
+</div>
+
+    <main id='main-cont' class="container-fluid main-container">
+
+        {% comment %} Educative offers {% endcomment %}
+        <section class="py-0" id="features">
+            <div class="container px-5 my-5">
+                <div class="row gx-5">
+                    <div class="row mb-5"><h2 class="fw-bolder mb-0">
+                        Acá se verán presentados diversos proyectos realizados en distintos cursos. 
+                    </h2></div>
+                    <div class="col">
+                        <div class="row gx-5 row-cols-1 row-cols-md-2">
+                            <a class="col mb-5 h-100 tag-offers" href="#" >
+                                <h2 class="h5">Fullstack - Codo a Codo</h2>
+                                <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+                            </a>
+                            {% comment %} <div class="col mb-5 h-100">
+                                
+                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building-fill"></i></div>
+                                <h2 class="h5">Plan Fines</h2>
+                                <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+                                
+                            </div> {% endcomment %}
+                            <a class="col mb-5 h-100 tag-offers" href="#">
+                                <h2 class="h5">Django Framework - Codo a Codo</h2>
+                                <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+                                
+                            </a> 
+
+                            <a class="col h-100 tag-offers"  href="#">
+                                <h2 class="h5">Python Engineering - Udemy</h2>
+                                <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+                            </a>
+                            <a class="col mb-5 h-100 tag-offers" href="#">
+                                <h2 class="h5">JavaScript avanzado - Udemy</h2>
+                                <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+                            </a>
+
+                            <a class="col mb-md-0 h-100 tag-offers" href="#">
+                                <h2 class="h5">Más cursos</h2>
+                                <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+                            </a>                            
+                            <a class="col mb-md-0 h-100 tag-offers" href="#">
+                                <h2 class="h5">Más cursos</h2>
+                                <p class="mb-0">Paragraph of text beneath the heading to explain the heading. Here is just a bit more text.</p>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {% comment %} Blog news section {% endcomment %}
+        <section class="py-5 bg-light bg-gradient">
+            <div class="container px-5 my-5">
+                <div class="row gx-5 justify-content-center">
+                    <div class="col-lg-8 col-xl-6">
+                        <div class="text-center">
+                            <h2 class="fw-bolder">Proyectos</h2>
+                            <p class="lead fw-normal text-muted mb-5">Aquí podrás ver los proyectos y novedades. 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row gx-5">
+                    {% for project in projects  %}
+                        {% include 'components/card_proyecto.html' %}
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+         {% comment %} Sede
+        <section class="py-5" id="scroll-target">
+            <div class="container px-5 my-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6"><img class="img-fluid rounded mb-5 mb-lg-0" src="{% static 'img/foto_cens_451_sede.png'%}" alt="Foto CENS 451 Sede" /></div>
+                    <div class="col-lg-6">
+                        <h2 class="fw-bolder">Sede principal - E.P. N° 13</h2>
+                        <p class="lead fw-normal text-muted mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto est, ut esse a labore aliquam beatae expedita. Blanditiis impedit numquam libero molestiae et fugit cupiditate, quibusdam expedita, maiores eaque quisquam.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {% comment %} Anexo {% endcomment %}
+        {% comment %} <section class="py-5 bg-light">
+            <div class="container px-5 my-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-first order-lg-last"><img class="img-fluid rounded mb-5 mb-lg-0" src="{% static 'img/foto_cens_451_anexo.png'%}" alt="Foto CENS 451 Anexo" /></div>
+                    <div class="col-lg-6">
+                        <h2 class="fw-bolder">Anexo - E.P. N° 2 (El Gauchito)</h2>
+                        <p class="lead fw-normal text-muted mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto est, ut esse a labore aliquam beatae expedita. Blanditiis impedit numquam libero molestiae et fugit cupiditate, quibusdam expedita, maiores eaque quisquam.</p>
+                    </div>
+                </div>
+            </div>
+        </section> {% endcomment %}
+
+        
+
+    </main>
+    
+    
+{% endblock %}

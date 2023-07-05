@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+ <title>Contacto</title>
+{% endblock %}
+
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/contact.css' %}?v={% now 'U'%}">
+{% endblock %}
+
+{% block header %}
+    {% include 'components/navbar.html' %}
+    {% include 'components/banner.html' %}
+{% endblock %}
+
+
+{% block main %}
+<main class='mx-auto mt-3'>
+    <div id='contact' class="container-fluid contact my-3 text-center mx-auto w-75">
+        <div class="row">
+            <h2 class="h2">¡Contactame!</h2>
+            <h5 class="h5">Si tenes alguna propuesta o simplemente querés conocerme un poco más no dudes en contactarme!</h5>
+        </div>
+        <div class="row text-center">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}" role="alert">
+                        {{message}}
+                </div>
+            {% endfor %}
+            <form action="{% url 'contact' %}" method="POST" novalidate>
+                {% csrf_token %}
+                <div class="row">
+                    {% for campo in form %}
+                        <div class="form-group py-2 {% if campo.errors %}has-validation{% endif %}">
+                            <div class=class="col-sm-10">
+                                <label for="name" class="fw-bold mb-1">{{ campo.label }}</label>
+                                {{campo}}
+                            </div>
+                        </div>
+                        {% if campo.errors %}
+                            <div style='font-size:0.875em' class="text-danger">
+                                {% for error in campo.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class='p-2 mt-3'>
+                    <button class="btn btn-success" type="submit">Enviar</button>
+                </div>
+            </form>          
+        </div>
+    </div>
+</main>
+{% endblock %}
+            {% comment %} <form action="{% url 'contact' %}" method="POST" novalidate>
+                {% csrf_token %}
+                <div class="row">
+                    {% for campo in form %}
+                        <div class="form-group py-2">
+                            <div class=class="col-sm-10">
+                                <label for="name" class="fw-bold mb-1">{{ campo.label }}</label>
+                                {{campo}}
+                            </div>
+                            <div class="msg_error">{{campo.errors}}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class='p-2 mt-3'>
+                    <button class="btn btn-success" type="submit">Enviar</button>
+                </div>
+            </form> {% endcomment %}
