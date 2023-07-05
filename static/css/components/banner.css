@@ -8,11 +8,14 @@
     bottom: 0;
     background-position: center center;
     background-size: cover;
-    height: 55vh;
+    height: 35vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: black;
     background-image: url("../../img/banner.svg");
+    box-shadow: inset 20px -18px 44px 30px #000000;
+    z-index: 1;
 }
 
 .background-cover:before {

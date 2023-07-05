@@ -16,10 +16,19 @@
 
 
 {% block main %}
-    <main class="container-fluid">
+
+<div class="row text-center">
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" role="alert">
+                {{message}}
+        </div>
+    {% endfor %}
+</div>
+
+    <main id='main-cont' class="container-fluid main-container">
 
         {% comment %} Educative offers {% endcomment %}
-        <section class="py-5" id="features">
+        <section class="py-0" id="features">
             <div class="container px-5 my-5">
                 <div class="row gx-5">
                     <div class="row mb-5"><h2 class="fw-bolder mb-0">
@@ -80,12 +89,12 @@
                         </div>
                     </div>
                 </div>
-                {% comment %} Acá iban las noticias {% endcomment %}
-                {% comment %} <div class="row gx-5">
-                    {% for noticia in noticias  %}
-                        {% include 'components/card_noticia.html' %}
+
+                <div class="row gx-5">
+                    {% for project in projects  %}
+                        {% include 'components/card_proyecto.html' %}
                     {% endfor %}
-                </div> {% endcomment %}
+                </div>
             </div>
         </section>
 

@@ -44,11 +44,12 @@
     {% block title %}{% endblock %}
 </head>
 <body>
+
     {% block header %}{% endblock %}
-    {% bootstrap_messages %}
+    {% comment %} Los mensajes de bootstrap los saco para ponerlos solo en los lugares que los necesite! {% endcomment %}
+    {% comment %} {% bootstrap_messages %} {% endcomment %}
     {% block main %}{% endblock %}
     {% include 'components/footer.html' %}
-
     {# scripts #}
     <script src="{% static 'js/navbar.js' %}?{% now 'U'%}"></script>
     

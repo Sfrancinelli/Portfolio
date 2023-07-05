@@ -1,0 +1,40 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/components/card.css' %}">
+</head>
+<div class="col-lg-6 mb-3">
+    <div class="card h-100 shadow border-0">
+        {% comment %} <img class="card-img-top" src="https://dummyimage.com/600x350/ced4da/6c757d" alt="..." /> {% endcomment %}
+
+        <div class="card-body p-6 d-flex-row align-items-center justify-content-center">
+            {% for projecttag in project.projecttag_set.all %}
+            <div class="badge bg-primary bg-gradient rounded-pill mb-2">
+                {{ projecttag.tag.name }}
+            </div>
+            {% endfor %}
+            <a class="text-decoration-none link-dark stretched-link" href="projects/{{project.id}}/">
+                <h5 class="card-title mb-3">
+                    {{project.title}}
+                </h5>
+            </a>
+            <p class="card-text mb-1">
+                    {{project.description | truncatewords:15 }} <i class='text-primary'>ver más</i>
+            </p>
+            <div id='cardContainer' class="text-center mb-0 d-flex align-items-center justify-content-center">
+                <img id='imgCard' style="border-radius: 10px;" class="mb-0 mt-3" src="{{ project.image.url }}" alt="Project Image" />
+            </div>
+        </div>
+        <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+            <div class="d-flex align-items-end justify-content-between">
+                <div class="d-flex align-items-center">
+                    <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
+                    <div class="small">
+                        <div class="fw-bold">Sebastián Francinelli</div>
+                        {% comment %} <div class="text-muted">March 12, 2023 &middot; 6 min read</div> {% endcomment %}
+                        <div class="text-muted">{{project.created_at}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

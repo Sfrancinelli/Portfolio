@@ -1,0 +1,13 @@
+#exampleInputPassword1 {
+    position: relative;
+    padding-right: 40px !important;
+}
+
+#exampleInputPassword1 span {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    padding: 13px 14px 5px 0px;
+    font-size: 14px;
+}

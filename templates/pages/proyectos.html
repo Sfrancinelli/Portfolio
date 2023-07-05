@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+ <title>Proyectos</title>
+{% endblock %}
+
+{% comment %} 
+{% block link %}
+    <link rel="stylesheet" href="{% static 'css/components/contact.css' %}?v={% now 'U' %}">
+{% endblock %} 
+{% endcomment %}
+
+{% block header %}
+    {% include 'components/navbar.html' %}
+{% endblock %}
+
+
+{% block main %}
+<div class="container mt-5">
+    <div class="row mt-5">
+        <div class="col-lg-8">
+            <!-- Post content-->
+            <article>
+                <!-- Post header-->
+                <div class="mb-4">
+                    <!-- Post title-->
+                    <h1 class="fw-bolder mb-1">{{ project.title }}</h1>
+                    <!-- Post meta content-->
+                    <div class="text-muted fst-italic mb-2"> {{ project.created_at }} </div>
+                    <!-- Post categories-->
+                    {% for projecttag in project.projecttag_set.all %}
+                    <a class="badge bg-primary bg-gradient rounded-pill mb-2 text-decoration-none link-light" href="#!">
+                        {{ projecttag.tag.name }}
+                    </a>
+                    {% endfor %}
+                </div>
+                <!-- Preview image figure-->
+                {% comment %} Acá iría mi imagen {% endcomment %}
+                <figure class="mb-4"><img id='imgCard' style="border-radius: 10px;" class="img-fluid rounded" src="{{ project.image.url }}" alt="Project Image" /></figure>
+                <!-- Post content-->
+                <section class="mb-5">
+                    <p class="fs-5 mb-4">
+                        {{ project.description }}
+                    </p>
+                </section>
+            </article>
+        </div>
+        <!-- Side widgets-->
+        <div class="col-lg-4">
+            <!-- Search widget-->
+            <div class="card mb-4">
+                <div class="card-header">Search</div>
+                <div class="card-body">
+                    <div class="input-group">
+                        <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
+                        <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Categories widget-->
+            <div class="card mb-4">
+                <!-- Personalizar categorías (armar en el modelo) -->
+                <div class="card-header">Categorías</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <ul class="list-unstyled mb-0">
+                                {% for category in project.categories.all|slice:"0:3" %}
+                                    <li><a href="#!">{{ category.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="col-sm-6">
+                            <ul class="list-unstyled mb-0">
+                                {% for category in project.categories.all|slice:"3:6" %}
+                                    <li><a href="#!">{{ category.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Side widget-->
+            <div class="card mb-4">
+                <div class="card-header">Aplicación {{projecttag.tag.name}}</div>
+                <div class="card-body">Si te gusto mi proyecto y querés indagar un poco más en el te dejo el acceso acá: <a href="#">LINK</a>. Muchas gracias!</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
