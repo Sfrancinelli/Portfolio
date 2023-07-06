@@ -61,7 +61,7 @@
                         </td>
                         <td>
                             <a href="{% url 'proyectos_editar' proyecto.id %}" title="Editar" class="btn btn-warning"><i class="fas fa-pencil"></i></a>
-                            {% comment %} <a href="{% url 'orientacion_eliminar' orientacion.id_orientacion %}" title="Eliminar" class="btn btn-danger"><i class="fas fa-trash"></i></a> {% endcomment %}
+                            <a href="{% url 'proyectos_eliminar' proyecto.id %}" title="Eliminar" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                         </td>
                     </tr>
                 {% endfor %}
