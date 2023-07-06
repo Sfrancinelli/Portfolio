@@ -192,7 +192,7 @@ class NewPassForm(forms.Form):
 
 
 class ProyectoForm(forms.ModelForm):
-    
+
     class Meta:
         model = Project
 
