@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-3">
                     <div class="md-form mb-0">
-                        <label for="nombre">Nombre</label>
+                        <label for="nombre">Búsqueda específica</label>
                         <input type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre" class="form-control">
                     </div>
                 </div>
@@ -48,7 +48,11 @@
                         <td>{{proyecto.title}}</td>
                         <td>{{proyecto.description}}</td>
                         <td>{{proyecto.image}}</td>
-                        <td>{{proyecto.categories}}</td>
+                        <td>
+                            {% for category in proyecto.categories.all %}
+                                {{ category.name }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </td>
                         {% comment %} <td>
                             <a href="{% url 'orientacion_editar' orientacion.id_orientacion %}" title="Editar" class="btn btn-warning"><i class="fas fa-pencil"></i></a>
                             <a href="{% url 'orientacion_eliminar' orientacion.id_orientacion %}" title="Eliminar" class="btn btn-danger"><i class="fas fa-trash"></i></a>

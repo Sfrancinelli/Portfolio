@@ -67,11 +67,11 @@ def proyectos_nuevo(request):
     if request.method == 'POST':
         formulario = ProyectoForm(request.POST, request.FILES)
         if formulario.is_valid():
-            image_file = formulario.cleaned_data['image']
-            save_path = 'media/project_images/'
-            with open(save_path, 'wb+') as destination:
-                for chunk in image_file.chunks():
-                    destination.write(chunk)
+            # image_file = formulario.cleaned_data['image']
+            # save_path = 'media/project_images/'
+            # with open(save_path, 'wb+') as destination:
+            #     for chunk in image_file.chunks():
+            #         destination.write(chunk)
             formulario.save()
             return redirect('proyectos_index')
     else:
