@@ -3,6 +3,7 @@
 {% block title %}Proyectos{% endblock title %}
 
 {% block main %}
+<br><br><br><br>
 <div class="card">
     <div class="card-header">
         <h3>Proyectos</h3>
@@ -12,7 +13,7 @@
         <form action="{% url 'index_admin' %}" method="GET">
             <div class="row">
                 <div class="col-3">
-                    <div class="md-form mb-0">
+                    <div class="md-form mb-1">
                         <label for="nombre">Búsqueda específica</label>
                         <input type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre" class="form-control">
                     </div>
@@ -28,7 +29,7 @@
 <div class="card">
     <div class="card-body">
         {% comment %} url acá era orientacion_nuevo {% endcomment %}
-        <a name="" id="" class="btn btn-success" href="{% url 'proyectos_nuevo' %}" role="button"> <i class="fa-solid fa-circle-plus"></i> Nuevo</a>
+        <a name="" id="" class="mb-2 btn btn-success" href="{% url 'proyectos_nuevo' %}" role="button"> <i class="fa-solid fa-circle-plus"></i> Nuevo</a>
         <!-- bs5-table-defaul -->
         <table class="table">
             <thead>
