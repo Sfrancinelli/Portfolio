@@ -157,9 +157,9 @@
         </nav>
       </header>
       <!--  Header End -->
+      {% block main %}{% endblock main %}
     </div>
   </div>
-  {% block main %}{% endblock main %}
   {% block extra_js %}{% endblock extra_js %}
   <script src="{% static 'administracion/assets/libs/jquery/dist/jquery.min.js' %}?v={% now 'U'%}"></script>
   <script src="{% static 'administracion/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}?v={% now 'U'%}"></script>
