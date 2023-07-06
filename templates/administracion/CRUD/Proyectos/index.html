@@ -3,16 +3,9 @@
 {% block title %}Proyectos{% endblock title %}
 
 {% block main %}
-
-<h1 class="mt-4">Proyectos</h1>
-<ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item"><a href="{% url 'index_admin' %}">Administración</a></li>
-    <li class="breadcrumb-item active">Proyectos</li>
-</ol>
-
 <div class="card">
     <div class="card-header">
-        <h3>Filtros</h3>
+        <h3>Proyectos</h3>
     </div>
     <div class="card-body">
         {% comment %} El url acá era buscar_orientaciones {% endcomment %}
@@ -35,29 +28,33 @@
 <div class="card">
     <div class="card-body">
         {% comment %} url acá era orientacion_nuevo {% endcomment %}
-        <a name="" id="" class="btn btn-success" href="{% url 'index_admin' %}" role="button"> <i class="fa-solid fa-circle-plus"></i> Nuevo</a>
+        <a name="" id="" class="btn btn-success" href="{% url 'proyectos_nuevo' %}" role="button"> <i class="fa-solid fa-circle-plus"></i> Nuevo</a>
         <!-- bs5-table-defaul -->
         <table class="table">
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Nombre</th>
-                    <th>Resolucion</th>
+                    <th>Título</th>
+                    <th>Descripción</th>
+                    <th>Imágen</th>
+                    <th>Categorías</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                {% comment %} {% for orientacion in orientaciones %}
+                {% for proyecto in proyectos %}
                     <tr>
-                        <td>{{orientacion.id_orientacion}}</td>
-                        <td>{{orientacion.orientacion}}</td>
-                        <td>{{orientacion.resolucion}}</td>
-                        <td>
+                        <td>{{proyecto.id}}</td>
+                        <td>{{proyecto.title}}</td>
+                        <td>{{proyecto.description}}</td>
+                        <td>{{proyecto.image}}</td>
+                        <td>{{proyecto.categories}}</td>
+                        {% comment %} <td>
                             <a href="{% url 'orientacion_editar' orientacion.id_orientacion %}" title="Editar" class="btn btn-warning"><i class="fas fa-pencil"></i></a>
                             <a href="{% url 'orientacion_eliminar' orientacion.id_orientacion %}" title="Eliminar" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                        </td>
+                        </td> {% endcomment %}
                     </tr>
-                {% endfor %} {% endcomment %}
+                {% endfor %}
 
             </tbody>
         </table>

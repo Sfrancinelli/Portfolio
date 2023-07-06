@@ -4,7 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {% block title %}{% endblock title %}
+  <title>
+  {% block title %}
+  {% endblock title %}
+  </title>
   <link rel="shortcut icon" type="image/png" href="{% static 'administracion/assets/images/logos/favicon.png' %}" />
   <link rel="stylesheet" href="{% static 'administracion/assets/css/styles.min.css' %}" />
   {% block scripts %}{% endblock scripts %}
@@ -150,9 +153,9 @@
         </nav>
       </header>
       <!--  Header End -->
-      {% block main %}{% endblock main %}
     </div>
   </div>
+  {% block main %}{% endblock main %}
   {% block extra_js %}{% endblock extra_js %}
   <script src="{% static 'administracion/assets/libs/jquery/dist/jquery.min.js' %}"></script>
   <script src="{% static 'administracion/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
