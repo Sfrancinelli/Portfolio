@@ -4,6 +4,7 @@ from django.forms import ValidationError
 import re
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from projects.models import Project, Category, ProjectTag, Tag
 
 
 def validate_pass(value):
@@ -188,3 +189,31 @@ class NewPassForm(forms.Form):
             self.add_error('new_pass', 'Las contraseñas no coinciden.')
             self.add_error('pass_confirm', 'Las contraseñas no coinciden.')
             raise ValidationError("Las contraseñas no coinciden")
+
+
+class ProyectoForm(forms.ModelForm):
+    
+    class Meta:
+        model = Project
+
+        fields = ['title', 'description', 'image', 'categories']
+
+    title = forms.CharField(
+        label='Title',
+        widget=forms.Textarea(attrs={'class': 'form-control'})
+    )
+
+    description = forms.CharField(
+        label='Descripción',
+        widget=forms.TextInput(attrs={'class': 'form-control'})
+    )
+
+    image = forms.ImageField(
+        label='Imágen representativa',
+        widget=forms.ClearableFileInput(attrs={'class': 'form-control'})
+    )
+
+    categories = forms.ModelMultipleChoiceField(
+        queryset=Category.objects.all(),
+        label='Categorías (CTRL + click para selección múltiple)'
+    )
