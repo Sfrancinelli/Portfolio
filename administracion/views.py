@@ -78,3 +78,20 @@ def proyectos_nuevo(request):
         formulario = ProyectoForm()
     return render(request, 'administracion/CRUD/Proyectos/new.html', {'form': formulario})
 
+
+def proyectos_editar(request, id):
+    try:
+        proyecto = Project.objects.get(pk=id)
+    except Project.DoesNotExist:
+        return render(request, 'administracion/404_admin.html')
+    
+    if request.method == 'POST':
+        formulario = ProyectoForm(request.POST, request.FILES, instance=proyecto)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('proyectos_index')
+        
+    else:
+        formulario = ProyectoForm(instance=proyecto)
+    return render(request, 'administracion/CRUD/Proyectos/edit.html', {'form': formulario})
+

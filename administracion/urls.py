@@ -13,7 +13,7 @@ urlpatterns = [
 
     path('proyectos/', views.proyectos_index, name='proyectos_index'),
     path('proyectos/nuevo/', views.proyectos_nuevo, name='proyectos_nuevo'),
-    # path('orientacion/editar/<int:id_orientacion>', views.orientacion_editar, name='orientacion_editar'),
+    path('proyectos/editar/<int:id>', views.proyectos_editar, name='proyectos_editar'),
     # path('orientacion/eliminar/<int:id_orientacion>', views.orientacion_eliminar, name='orientacion_eliminar'),
     # path('orientacion/buscar/', views.orientacion_buscar, name='buscar_orientaciones'),
 ]

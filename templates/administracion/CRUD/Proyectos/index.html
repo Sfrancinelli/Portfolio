@@ -9,16 +9,21 @@
         <h3>Proyectos</h3>
     </div>
     <div class="card-body">
+        <div class="row">
+        <div class="col-3">
+            <a name="" id="" class="mb-6 btn btn-primary" href="{% url 'index_admin' %}" role="button">Atrás</a>
+        </div>
+        </div>
         {% comment %} El url acá era buscar_orientaciones {% endcomment %}
         <form action="{% url 'index_admin' %}" method="GET">
             <div class="row">
-                <div class="col-3">
+                <div class="col-3 mt-6">
                     <div class="md-form mb-1">
                         <label for="nombre">Búsqueda específica</label>
                         <input type="text" id="nombre" name="nombre" placeholder="Ingrese el nombre" class="form-control">
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col-3 mt-6">
                     <button type="submit" class="btn btn-primary mt-4">Buscar</button>
                 </div>
             </div>
@@ -29,7 +34,7 @@
 <div class="card">
     <div class="card-body">
         {% comment %} url acá era orientacion_nuevo {% endcomment %}
-        <a name="" id="" class="mb-2 btn btn-success" href="{% url 'proyectos_nuevo' %}" role="button"> <i class="fa-solid fa-circle-plus"></i> Nuevo</a>
+        <a name="" id="" class="mb-2 btn btn-success" href="{% url 'proyectos_nuevo' %}" role="button"> <i class="mr-2 fa-solid fa-circle-plus"></i>  Nuevo</a>
         <!-- bs5-table-defaul -->
         <table class="table">
             <thead>
@@ -54,10 +59,10 @@
                                 {{ category.name }}{% if not forloop.last %}, {% endif %}
                             {% endfor %}
                         </td>
-                        {% comment %} <td>
-                            <a href="{% url 'orientacion_editar' orientacion.id_orientacion %}" title="Editar" class="btn btn-warning"><i class="fas fa-pencil"></i></a>
-                            <a href="{% url 'orientacion_eliminar' orientacion.id_orientacion %}" title="Eliminar" class="btn btn-danger"><i class="fas fa-trash"></i></a>
-                        </td> {% endcomment %}
+                        <td>
+                            <a href="{% url 'proyectos_editar' proyecto.id %}" title="Editar" class="btn btn-warning"><i class="fas fa-pencil"></i></a>
+                            {% comment %} <a href="{% url 'orientacion_eliminar' orientacion.id_orientacion %}" title="Eliminar" class="btn btn-danger"><i class="fas fa-trash"></i></a> {% endcomment %}
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
