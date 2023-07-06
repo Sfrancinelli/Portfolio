@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth import logout, authenticate
 from django.contrib.auth import login as auth_login
 from django.http import HttpResponse
+from projects.models import Project
 
 
 # Create your views here.
@@ -54,3 +55,8 @@ def register(request):
 
 def profile(request):
     return HttpResponse('Perfil')
+
+
+def proyectos_index(request):
+    proyectos = Project.objects.all()
+    return render(request, 'administracion/CRUD/Proyectos/index.html', {'proyectos': proyectos})

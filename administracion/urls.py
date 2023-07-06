@@ -9,7 +9,9 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('logout/', auth_views.LogoutView.as_view(template_name='pages/index.html'), name='logout'),
     path('profile/', views.profile, name='profile'),
-    # path('orentacion/', views.orientacion_index, name='orientacion_index'),
+
+
+    path('proyectos/', views.proyectos_index, name='proyectos_index'),
     # path('orientacion/nuevo/', views.orientacion_nuevo, name='orientacion_nuevo'),
     # path('orientacion/editar/<int:id_orientacion>', views.orientacion_editar, name='orientacion_editar'),
     # path('orientacion/eliminar/<int:id_orientacion>', views.orientacion_eliminar, name='orientacion_eliminar'),
