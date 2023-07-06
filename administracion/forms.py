@@ -199,21 +199,22 @@ class ProyectoForm(forms.ModelForm):
         fields = ['title', 'description', 'image', 'categories']
 
     title = forms.CharField(
-        label='Title',
-        widget=forms.Textarea(attrs={'class': 'form-control'})
+        label='Título',
+        widget=forms.TextInput(attrs={'class': 'form-control mb-2'})
     )
 
     description = forms.CharField(
         label='Descripción',
-        widget=forms.TextInput(attrs={'class': 'form-control'})
+        widget=forms.Textarea(attrs={'class': 'form-control mb-2'})
     )
 
     image = forms.ImageField(
         label='Imágen representativa',
-        widget=forms.ClearableFileInput(attrs={'class': 'form-control'})
+        widget=forms.ClearableFileInput(attrs={'class': 'form-control mb-2'})
     )
 
     categories = forms.ModelMultipleChoiceField(
         queryset=Category.objects.all(),
-        label='Categorías (CTRL + click para selección múltiple)'
+        label='Categorías (CTRL + click para selección múltiple)',
+        widget=forms.SelectMultiple(attrs={'class': 'form-control', 'style': 'display: block'})
     )
