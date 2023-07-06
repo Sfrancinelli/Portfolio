@@ -5,6 +5,7 @@ from django.contrib.auth import logout, authenticate
 from django.contrib.auth import login as auth_login
 from django.http import HttpResponse
 from projects.models import Project
+from administracion.forms import ProyectoForm
 
 
 # Create your views here.
@@ -60,3 +61,14 @@ def profile(request):
 def proyectos_index(request):
     proyectos = Project.objects.all()
     return render(request, 'administracion/CRUD/Proyectos/index.html', {'proyectos': proyectos})
+
+
+def proyectos_nuevo(request):
+    if request.method == 'POST':
+        formulario = ProyectoForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('proyectos_index')
+    else:
+        formulario = ProyectoForm()
+    return render(request, 'administracion/CRUD/Proyectos/new.html', {'form': formulario})
