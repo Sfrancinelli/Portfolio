@@ -67,11 +67,6 @@ def proyectos_nuevo(request):
     if request.method == 'POST':
         formulario = ProyectoForm(request.POST, request.FILES)
         if formulario.is_valid():
-            # image_file = formulario.cleaned_data['image']
-            # save_path = 'media/project_images/'
-            # with open(save_path, 'wb+') as destination:
-            #     for chunk in image_file.chunks():
-            #         destination.write(chunk)
             formulario.save()
             return redirect('proyectos_index')
     else:
@@ -84,14 +79,30 @@ def proyectos_editar(request, id):
         proyecto = Project.objects.get(pk=id)
     except Project.DoesNotExist:
         return render(request, 'administracion/404_admin.html')
-    
-    if request.method == 'POST':
-        formulario = ProyectoForm(request.POST, request.FILES, instance=proyecto)
-        if formulario.is_valid():
-            formulario.save()
-            return redirect('proyectos_index')
-        
-    else:
-        formulario = ProyectoForm(instance=proyecto)
-    return render(request, 'administracion/CRUD/Proyectos/edit.html', {'form': formulario})
 
+    if request.method == 'GET':
+        formulario = ProyectoForm(instance=proyecto)
+        previous_image = proyecto.image.storage
+
+        return render(request, 'administracion/CRUD/Proyectos/edit.html', {'form': formulario})
+
+    elif request.method == 'POST':
+        formulario = ProyectoForm(request.POST, request.FILES, instance=proyecto)
+        previous_image = proyecto.image.storage
+        if formulario.is_valid():
+            form_was_valid = True
+            if form_was_valid:
+                previous_image.delete(proyecto.image.name)
+                formulario.save()
+                return redirect('proyectos_index')
+
+
+def proyectos_eliminar(request, id):
+    try:
+        proyecto = Project.objects.get(pk=id)
+    except Project.DoesNotExist:
+        return render(request, 'administracion/404_admin.html')
+    
+    proyecto.image.storage.delete(proyecto.image.name)
+    proyecto.delete()
+    return redirect('proyectos_index')
