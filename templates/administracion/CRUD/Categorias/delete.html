@@ -1,18 +1,18 @@
 {% extends '../../base_admin.html' %}
 
-{% block title %}Eliminar Etiqueta{% endblock%}
+{% block title %}Eliminar Categoría{% endblock%}
 
 {% block main %}
 <br><br><br>
-<h1 class="mt-4 mx-4">Etiquetas</h1>
+<h1 class="mt-4 mx-4">Categorías</h1>
 <ol class="breadcrumb mb-4 mx-4">
     <li class="breadcrumb-item"><a href="{% url 'index_admin' %}">Administracion</a></li>
-    <li class="breadcrumb-item active">Eliminar etiqueta</li>
+    <li class="breadcrumb-item active">Eliminar categoría</li>
 </ol>
 
 
 <div class="card">
-    <div class="card-header fw-bold fs-5">Eliminación de etiqueta</div>
+    <div class="card-header fw-bold fs-5">Eliminación de categoría</div>
     <div class="card-body">
         <form method="post">
             {% csrf_token %}

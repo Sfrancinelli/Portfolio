@@ -1,22 +1,22 @@
 {% extends '../../base_admin.html' %}
 
-{% block title %}Editar Etiqueta{% endblock%}
+{% block title %}Editar Categoría{% endblock%}
 
 {% block main %}
 <br><br><br>
-<h1 class="mt-4 mx-4">Etiquetas</h1>
+<h1 class="mt-4 mx-4">Categorías</h1>
 <ol class="breadcrumb mb-4 mx-4">
     <li class="breadcrumb-item"><a href="{% url 'index_admin' %}">Administracion</a></li>
-    <li class="breadcrumb-item active">Editar etiqueta</li>
+    <li class="breadcrumb-item active">Editar categorías</li>
 </ol>
 
 
 <div class="card">
-    <div class="card-header fw-bold fs-5">Edición de etiquetas</div>
+    <div class="card-header fw-bold fs-5">Edición de categorías</div>
     <div class="card-body">
         <form action="" method="post">
             {% csrf_token %}
-            {% include 'administracion/CRUD/Etiquetas/form.html' %}
+            {% include 'administracion/CRUD/Categorias/form.html' %}
         </form>
     </div>
 </div>
