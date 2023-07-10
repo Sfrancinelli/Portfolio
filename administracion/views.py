@@ -4,8 +4,8 @@ from django.contrib import messages
 from django.contrib.auth import logout, authenticate
 from django.contrib.auth import login as auth_login
 from django.http import HttpResponse
-from projects.models import Project
-from administracion.forms import ProyectoForm
+from projects.models import Project, Tag, ProjectTag, Category
+from administracion.forms import ProyectoForm, EtiquetaForm
 from django.core.files.storage import default_storage
 
 
@@ -58,7 +58,7 @@ def register(request):
 def profile(request):
     return HttpResponse('Perfil')
 
-
+# Proyectos
 def proyectos_index(request):
     proyectos = Project.objects.all()
     return render(request, 'administracion/CRUD/Proyectos/index.html', {'proyectos': proyectos})
@@ -107,7 +107,7 @@ def proyectos_eliminar(request, id):
         proyecto = Project.objects.get(pk=id)
     except Project.DoesNotExist:
         return render(request, 'administracion/404_admin.html')
-    
+
     proyecto.image.storage.delete(proyecto.image.name)
     proyecto.delete()
     return redirect('proyectos_index')
@@ -119,3 +119,59 @@ def proyectos_buscar(request):
     proyectos = Project.objects.filter(title__icontains=nombre)
 
     return render(request, 'administracion/CRUD/Proyectos/index.html', {'proyectos': proyectos})
+
+
+# Etiquetas
+def etiquetas_index(request):
+    etiquetas = Tag.objects.all()
+    return render(request, 'administracion/CRUD/Etiquetas/index.html', {'etiquetas': etiquetas})
+
+
+def etiquetas_nuevo(request):
+    if request.method == 'POST':
+        formulario = EtiquetaForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('etiquetas_index')
+    else:
+        formulario = EtiquetaForm()
+    return render(request, 'administracion/CRUD/Etiquetas/new.html', {'form': formulario})
+
+
+def etiquetas_editar(request, id):
+    try:
+        etiquetas = Tag.objects.get(pk=id)
+    except Tag.DoesNotExist:
+        return render(request, 'administracion/404_admin.html')
+
+    if request.method == 'GET':
+        formulario = EtiquetaForm(instance=etiquetas)
+        return render(request, 'administracion/CRUD/Etiquetas/edit.html', {'form': formulario})
+
+    elif request.method == 'POST':
+        formulario = EtiquetaForm(request.POST, instance=etiquetas)
+        if formulario.is_valid():
+
+            formulario.save()
+
+            return redirect('etiquetas_index')
+
+    return render(request, 'administracion/CRUD/Etiquetas/edit.html', {'form': formulario})
+
+
+def etiquetas_eliminar(request, id):
+    try:
+        etiquetas = Tag.objects.get(pk=id)
+    except Tag.DoesNotExist:
+        return render(request, 'administracion/404_admin.html')
+
+    etiquetas.delete()
+    return redirect('etiquetas_index')
+
+
+def etiquetas_buscar(request):
+    nombre = request.GET.get('nombre')
+
+    etiquetas = Tag.objects.filter(name__icontains=nombre)
+
+    return render(request, 'administracion/CRUD/Etiquetas/index.html', {'etiquetas': etiquetas})

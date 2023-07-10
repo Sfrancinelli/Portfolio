@@ -16,4 +16,10 @@ urlpatterns = [
     path('proyectos/editar/<int:id>', views.proyectos_editar, name='proyectos_editar'),
     path('proyectos/eliminar/<int:id>', views.proyectos_eliminar, name='proyectos_eliminar'),
     path('proyectos/buscar/', views.proyectos_buscar, name='proyectos_buscar'),
+
+    path('etiquetas/', views.etiquetas_index, name='etiquetas_index'),
+    path('etiquetas/nuevo/', views.etiquetas_nuevo, name='etiquetas_nuevo'),
+    path('etiquetas/editar/<int:id>', views.etiquetas_editar, name='etiquetas_editar'),
+    path('etiquetas/eliminar/<int:id>', views.etiquetas_eliminar, name='etiquetas_eliminar'),
+    path('etiquetas/buscar/', views.etiquetas_buscar, name='etiquetas_buscar'),
 ]
