@@ -75,28 +75,6 @@ def proyectos_nuevo(request):
     return render(request, 'administracion/CRUD/Proyectos/new.html', {'form': formulario})
 
 
-# def proyectos_editar(request, id):
-#     try:
-#         proyecto = Project.objects.get(pk=id)
-#     except Project.DoesNotExist:
-#         return render(request, 'administracion/404_admin.html')
-
-#     if request.method == 'GET':
-#         formulario = ProyectoForm(instance=proyecto)
-#         previous_image = proyecto.image.storage
-
-#         return render(request, 'administracion/CRUD/Proyectos/edit.html', {'form': formulario})
-
-#     elif request.method == 'POST':
-#         formulario = ProyectoForm(request.POST, request.FILES, instance=proyecto)
-#         previous_image = proyecto.image.storage
-#         if formulario.is_valid():
-#             form_was_valid = True
-#             if form_was_valid:
-#                 previous_image.delete(proyecto.image.name)
-#                 formulario.save()
-#                 return redirect('proyectos_index')
-
 def proyectos_editar(request, id):
     try:
         proyecto = Project.objects.get(pk=id)
@@ -133,3 +111,11 @@ def proyectos_eliminar(request, id):
     proyecto.image.storage.delete(proyecto.image.name)
     proyecto.delete()
     return redirect('proyectos_index')
+
+
+def proyectos_buscar(request):
+    nombre = request.GET.get('nombre')
+
+    proyectos = Project.objects.filter(title__icontains=nombre)
+
+    return render(request, 'administracion/CRUD/Proyectos/index.html', {'proyectos': proyectos})
