@@ -5,7 +5,7 @@ from django.contrib.auth import logout, authenticate
 from django.contrib.auth import login as auth_login
 from django.http import HttpResponse
 from projects.models import Project, Tag, ProjectTag, Category
-from administracion.forms import ProyectoForm, EtiquetaForm
+from administracion.forms import ProyectoForm, EtiquetaForm, CategoriaForm
 from django.core.files.storage import default_storage
 
 
@@ -57,6 +57,7 @@ def register(request):
 
 def profile(request):
     return HttpResponse('Perfil')
+
 
 # Proyectos
 def proyectos_index(request):
@@ -175,3 +176,59 @@ def etiquetas_buscar(request):
     etiquetas = Tag.objects.filter(name__icontains=nombre)
 
     return render(request, 'administracion/CRUD/Etiquetas/index.html', {'etiquetas': etiquetas})
+
+
+# Categorías
+def categorias_index(request):
+    categorias = Category.objects.all()
+    return render(request, 'administracion/CRUD/Categorias/index.html', {'categorias': categorias})
+
+
+def categorias_nuevo(request):
+    if request.method == 'POST':
+        formulario = CategoriaForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('categorias_index')
+    else:
+        formulario = CategoriaForm()
+    return render(request, 'administracion/CRUD/Categorias/new.html', {'form': formulario})
+
+
+def categorias_editar(request, id):
+    try:
+        categorias = Category.objects.get(pk=id)
+    except Category.DoesNotExist:
+        return render(request, 'administracion/404_admin.html')
+
+    if request.method == 'GET':
+        formulario = CategoriaForm(instance=categorias)
+        return render(request, 'administracion/CRUD/Categorias/edit.html', {'form': formulario})
+
+    elif request.method == 'POST':
+        formulario = CategoriaForm(request.POST, instance=categorias)
+        if formulario.is_valid():
+
+            formulario.save()
+
+            return redirect('categorias_index')
+
+    return render(request, 'administracion/CRUD/Categorias/edit.html', {'form': formulario})
+
+
+def categorias_eliminar(request, id):
+    try:
+        categorias = Category.objects.get(pk=id)
+    except Category.DoesNotExist:
+        return render(request, 'administracion/404_admin.html')
+
+    categorias.delete()
+    return redirect('categorias_index')
+
+
+def categorias_buscar(request):
+    nombre = request.GET.get('nombre')
+
+    categorias = Category.objects.filter(name__icontains=nombre)
+
+    return render(request, 'administracion/CRUD/Categorias/index.html', {'categorias': categorias})
