@@ -6,6 +6,7 @@ from django.contrib.auth import login as auth_login
 from django.http import HttpResponse
 from projects.models import Project
 from administracion.forms import ProyectoForm
+from django.core.files.storage import default_storage
 
 
 # Create your views here.
@@ -74,27 +75,53 @@ def proyectos_nuevo(request):
     return render(request, 'administracion/CRUD/Proyectos/new.html', {'form': formulario})
 
 
+# def proyectos_editar(request, id):
+#     try:
+#         proyecto = Project.objects.get(pk=id)
+#     except Project.DoesNotExist:
+#         return render(request, 'administracion/404_admin.html')
+
+#     if request.method == 'GET':
+#         formulario = ProyectoForm(instance=proyecto)
+#         previous_image = proyecto.image.storage
+
+#         return render(request, 'administracion/CRUD/Proyectos/edit.html', {'form': formulario})
+
+#     elif request.method == 'POST':
+#         formulario = ProyectoForm(request.POST, request.FILES, instance=proyecto)
+#         previous_image = proyecto.image.storage
+#         if formulario.is_valid():
+#             form_was_valid = True
+#             if form_was_valid:
+#                 previous_image.delete(proyecto.image.name)
+#                 formulario.save()
+#                 return redirect('proyectos_index')
+
 def proyectos_editar(request, id):
     try:
         proyecto = Project.objects.get(pk=id)
+        previous_image_path = proyecto.image.path if proyecto.image else None
     except Project.DoesNotExist:
         return render(request, 'administracion/404_admin.html')
 
     if request.method == 'GET':
         formulario = ProyectoForm(instance=proyecto)
-        previous_image = proyecto.image.storage
-
         return render(request, 'administracion/CRUD/Proyectos/edit.html', {'form': formulario})
 
     elif request.method == 'POST':
         formulario = ProyectoForm(request.POST, request.FILES, instance=proyecto)
-        previous_image = proyecto.image.storage
         if formulario.is_valid():
-            form_was_valid = True
-            if form_was_valid:
-                previous_image.delete(proyecto.image.name)
-                formulario.save()
-                return redirect('proyectos_index')
+
+            proyecto = formulario.save(commit=False)
+
+            if previous_image_path and default_storage.exists(previous_image_path):
+                default_storage.delete(previous_image_path)
+
+            proyecto.save()
+
+            return redirect('proyectos_index')
+
+    return render(request, 'administracion/CRUD/Proyectos/edit.html', {'form': formulario})
 
 
 def proyectos_eliminar(request, id):
