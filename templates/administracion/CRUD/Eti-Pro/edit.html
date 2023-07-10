@@ -1,0 +1,23 @@
+{% extends '../../base_admin.html' %}
+
+{% block title %}Editar Proyecto-Etiqueta{% endblock%}
+
+{% block main %}
+<br><br><br>
+<h1 class="mt-4 mx-4">Proyecto-Etiqueta</h1>
+<ol class="breadcrumb mb-4 mx-4">
+    <li class="breadcrumb-item"><a href="{% url 'index_admin' %}">Administracion</a></li>
+    <li class="breadcrumb-item active">Editar Proyecto-Etiqueta</li>
+</ol>
+
+
+<div class="card">
+    <div class="card-header fw-bold fs-5">Edición de Proyecto-Etiqueta</div>
+    <div class="card-body">
+        <form action="" method="post">
+            {% csrf_token %}
+            {% include 'administracion/CRUD/Eti-Pro/form.html' %}
+        </form>
+    </div>
+</div>
+{% endblock main %}

@@ -1,0 +1,24 @@
+{% extends '../../base_admin.html' %}
+
+{% block title %}Eliminar Proyecto-Etiqueta{% endblock%}
+
+{% block main %}
+<br><br><br>
+<h1 class="mt-4 mx-4">Proyecto-Etiqueta</h1>
+<ol class="breadcrumb mb-4 mx-4">
+    <li class="breadcrumb-item"><a href="{% url 'index_admin' %}">Administracion</a></li>
+    <li class="breadcrumb-item active">Eliminar Proyecto-Etiqueta</li>
+</ol>
+
+
+<div class="card">
+    <div class="card-header fw-bold fs-5">Eliminación de Proyecto-Etiqueta</div>
+    <div class="card-body">
+        <form method="post">
+            {% csrf_token %}
+            <p>Esta seguro que quiere eliminar la categoria "{{ object.nombre }}"?</p>
+            <input type="submit" value="Confirmar" class="btn btn-danger">
+        </form>
+    </div>
+</div>
+{% endblock main %}
