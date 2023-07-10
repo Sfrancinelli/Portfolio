@@ -1,12 +1,12 @@
 {% extends '../../base_admin.html' %}
 
-{% block title %}Proyectos{% endblock title %}
+{% block title %}Etiquetas{% endblock title %}
 
 {% block main %}
 <br><br><br><br>
 <div class="card">
     <div class="card-header">
-        <h3>Proyectos</h3>
+        <h3>Etiquetas</h3>
     </div>
     <div class="card-body">
         <div class="row">
@@ -15,7 +15,7 @@
         </div>
         </div>
         {% comment %} El url acá era buscar_orientaciones {% endcomment %}
-        <form action="{% url 'proyectos_buscar' %}" method="GET">
+        <form action="{% url 'etiquetas_buscar' %}" method="GET">
             <div class="row">
                 <div class="col-3 mt-6">
                     <div class="md-form mb-1">
@@ -34,34 +34,23 @@
 <div class="card">
     <div class="card-body">
         {% comment %} url acá era orientacion_nuevo {% endcomment %}
-        <a name="" id="" class="mb-2 btn btn-success" href="{% url 'proyectos_nuevo' %}" role="button"> <i class="mr-2 fa-solid fa-circle-plus"></i>  Nuevo</a>
+        <a name="" id="" class="mb-2 btn btn-success" href="{% url 'etiquetas_nuevo' %}" role="button"> <i class="mr-2 fa-solid fa-circle-plus"></i>  Nuevo</a>
         <!-- bs5-table-defaul -->
         <table class="table">
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Título</th>
-                    <th>Descripción</th>
-                    <th>Imágen</th>
-                    <th>Categorías</th>
-                    <th>Acciones</th>
+                    <th>Nombre</th>
                 </tr>
             </thead>
             <tbody>
-                {% for proyecto in proyectos %}
+                {% for etiqueta in etiquetas %}
                     <tr>
-                        <td>{{proyecto.id}}</td>
-                        <td>{{proyecto.title}}</td>
-                        <td>{{proyecto.description}}</td>
-                        <td>{{proyecto.image}}</td>
+                        <td>{{etiqueta.id}}</td>
+                        <td>{{etiqueta.name}}</td>
                         <td>
-                            {% for category in proyecto.categories.all %}
-                                {{ category.name }}{% if not forloop.last %}, {% endif %}
-                            {% endfor %}
-                        </td>
-                        <td>
-                            <a href="{% url 'proyectos_editar' proyecto.id %}" title="Editar" class="btn btn-warning"><i class="fas fa-pencil"></i></a>
-                            <a href="{% url 'proyectos_eliminar' proyecto.id %}" title="Eliminar" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                            <a href="{% url 'etiquetas_editar' etiqueta.id %}" title="Editar" class="btn btn-warning"><i class="fas fa-pencil"></i></a>
+                            <a href="{% url 'etiquetas_eliminar' etiqueta.id %}" title="Eliminar" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                         </td>
                     </tr>
                 {% endfor %}

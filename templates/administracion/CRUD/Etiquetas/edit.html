@@ -4,19 +4,19 @@
 
 {% block main %}
 <br><br><br>
-<h1 class="mt-4 mx-4">Proyectos</h1>
+<h1 class="mt-4 mx-4">Etiquetas</h1>
 <ol class="breadcrumb mb-4 mx-4">
     <li class="breadcrumb-item"><a href="{% url 'index_admin' %}">Administracion</a></li>
-    <li class="breadcrumb-item active">Editar Proyecto</li>
+    <li class="breadcrumb-item active">Editar etiqueta</li>
 </ol>
 
 
 <div class="card">
-    <div class="card-header fw-bold fs-5">Edición de proyecto</div>
+    <div class="card-header fw-bold fs-5">Edición de etiquetas</div>
     <div class="card-body">
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="" method="post">
             {% csrf_token %}
-            {% include 'administracion/CRUD/Proyectos/form.html' %}
+            {% include 'administracion/CRUD/Etiquetas/form.html' %}
         </form>
     </div>
 </div>
