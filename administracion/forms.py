@@ -215,7 +215,7 @@ class ProyectoForm(forms.ModelForm):
 
     categories = forms.ModelMultipleChoiceField(
         queryset=Category.objects.all(),
-        label='Categorías (CTRL + click para selección múltiple)',
+        label='Categorías (SHIFT + click para selección múltiple)',
         widget=forms.SelectMultiple(attrs={'class': 'form-control', 'style': 'display: block'})
     )
 
@@ -243,4 +243,24 @@ class CategoriaForm(forms.ModelForm):
     name = forms.CharField(
         label='Nombre',
         widget=forms.TextInput(attrs={'class': 'form-control mb-2'})
+    )
+
+
+class ProjectTagForm(forms.ModelForm):
+
+    class Meta:
+        model = ProjectTag
+
+        fields = ['project', 'tag']
+
+    project = forms.ModelChoiceField(
+        queryset=Project.objects.all(),
+        label='Proyecto',
+        widget=forms.Select(attrs={'class': 'form-control', 'style': 'display: block'})
+    )
+
+    tag = forms.ModelChoiceField(
+        queryset=Tag.objects.all(),
+        label='Etiqueta',
+        widget=forms.Select(attrs={'class': 'form-control', 'style': 'display: block'})
     )
