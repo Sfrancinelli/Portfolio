@@ -218,3 +218,16 @@ class ProyectoForm(forms.ModelForm):
         label='Categorías (CTRL + click para selección múltiple)',
         widget=forms.SelectMultiple(attrs={'class': 'form-control', 'style': 'display: block'})
     )
+
+
+class EtiquetaForm(forms.ModelForm):
+
+    class Meta:
+        model = Tag
+
+        fields = ['name']
+
+    name = forms.CharField(
+        label='Nombre',
+        widget=forms.TextInput(attrs={'class': 'form-control mb-2'})
+    )
