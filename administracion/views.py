@@ -5,8 +5,9 @@ from django.contrib.auth import logout, authenticate
 from django.contrib.auth import login as auth_login
 from django.http import HttpResponse
 from projects.models import Project, Tag, ProjectTag, Category
-from administracion.forms import ProyectoForm, EtiquetaForm, CategoriaForm
+from administracion.forms import ProyectoForm, EtiquetaForm, CategoriaForm, ProjectTagForm
 from django.core.files.storage import default_storage
+from django.db.models import Q
 
 
 # Create your views here.
@@ -232,3 +233,61 @@ def categorias_buscar(request):
     categorias = Category.objects.filter(name__icontains=nombre)
 
     return render(request, 'administracion/CRUD/Categorias/index.html', {'categorias': categorias})
+
+
+# Proyecto-Etiquetas
+def pro_tag_index(request):
+    pro_tags = ProjectTag.objects.all()
+    return render(request, 'administracion/CRUD/Eti-Pro/index.html', {'pro_tags': pro_tags})
+
+
+def pro_tag_nuevo(request):
+    if request.method == 'POST':
+        formulario = ProjectTagForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('pro_tag_index')
+    else:
+        formulario = ProjectTagForm()
+    return render(request, 'administracion/CRUD/Eti-Pro/new.html', {'form': formulario})
+
+
+def pro_tag_editar(request, id):
+    try:
+        pro_tags = ProjectTag.objects.get(pk=id)
+    except ProjectTag.DoesNotExist:
+        return render(request, 'administracion/404_admin.html')
+
+    if request.method == 'GET':
+        formulario = ProjectTagForm(instance=pro_tags)
+        return render(request, 'administracion/CRUD/Eti-Pro/edit.html', {'form': formulario})
+
+    elif request.method == 'POST':
+        formulario = ProjectTagForm(request.POST, instance=pro_tags)
+        if formulario.is_valid():
+
+            formulario.save()
+
+            return redirect('pro_tag_index')
+
+    return render(request, 'administracion/CRUD/Eti-Pro/edit.html', {'form': formulario})
+
+
+def pro_tag_eliminar(request, id):
+    try:
+        pro_tags = ProjectTag.objects.get(pk=id)
+    except ProjectTag.DoesNotExist:
+        return render(request, 'administracion/404_admin.html')
+
+    pro_tags.delete()
+    return redirect('pro_tag_index')
+
+
+def pro_tag_buscar(request):
+    nombre = request.GET.get('nombre')
+
+    pro_tags = ProjectTag.objects.filter(
+        Q(project__title__icontains=nombre) | Q(tag__name__icontains=nombre)
+    )
+
+    return render(request, 'administracion/CRUD/Eti-Pro/index.html', {'pro_tags': pro_tags})

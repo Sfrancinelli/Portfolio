@@ -28,4 +28,10 @@ urlpatterns = [
     path('categorias/editar/<int:id>', views.categorias_editar, name='categorias_editar'),
     path('categorias/eliminar/<int:id>', views.categorias_eliminar, name='categorias_eliminar'),
     path('categorias/buscar/', views.categorias_buscar, name='categorias_buscar'),
+
+    path('pro_tag/', views.pro_tag_index, name='pro_tag_index'),
+    path('pro_tag/nuevo/', views.pro_tag_nuevo, name='pro_tag_nuevo'),
+    path('pro_tag/editar/<int:id>', views.pro_tag_editar, name='pro_tag_editar'),
+    path('pro_tag/eliminar/<int:id>', views.pro_tag_eliminar, name='pro_tag_eliminar'),
+    path('pro_tag/buscar/', views.pro_tag_buscar, name='pro_tag_buscar'),
 ]
