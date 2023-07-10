@@ -231,3 +231,16 @@ class EtiquetaForm(forms.ModelForm):
         label='Nombre',
         widget=forms.TextInput(attrs={'class': 'form-control mb-2'})
     )
+
+
+class CategoriaForm(forms.ModelForm):
+
+    class Meta:
+        model = Category
+
+        fields = ['name']
+
+    name = forms.CharField(
+        label='Nombre',
+        widget=forms.TextInput(attrs={'class': 'form-control mb-2'})
+    )
