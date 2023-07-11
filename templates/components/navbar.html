@@ -18,8 +18,14 @@
 
       {% comment %} links desktop {% endcomment %}
 
+      {% url 'index' as index_url %}
+
       <ul id="navId" class="navigation">
+        {% if request.path == index_url %}
+        <li><a href="#proyects">Proyectos</a></li>
+        {% else %}
         <li><a href="{% url 'index' %}">Proyectos</a></li>
+        {% endif %}
         {% comment %} 
         {% if perms.administracion.administrador %}
         <li><a href="{% url 'inicio_administracion' %}">Administración</a></li>
@@ -27,6 +33,7 @@
         {% endcomment %}
         <li><a href="{% url 'about' %}">About</a></li>
         <li><a href="{% url 'contact' %}">Contacto</a></li>
+        {% comment %} 
         {% if user.is_authenticated %}
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
           <li class="nav-item dropdown">
@@ -41,7 +48,8 @@
         </ul>
         {% else %}
         <li><a href="{% url 'login' %}">INGRESAR</a></li>
-        {% endif %}
+        {% endif %} 
+        {% endcomment %}
 
       </ul>
 
@@ -53,14 +61,19 @@
 
       <div id="navMobileId">
         <ul>
-            <li><a class="link" href="{% url 'index' %}">Proyectos</a></li>
-            <li><a class="link" href="{% url 'about' %}">About</a></li>
-            <li><a class="link" href="{% url 'contact' %}">Contacto</a></li>
+          {% if request.path == index_url %}
+          <li><a class="link" href="#proyects">Proyectos</a></li>
+          {% else %}
+          <li><a class="link" href="{% url 'index' %}">Proyectos</a></li>
+          {% endif %}
+          <li><a class="link" href="{% url 'about' %}">About</a></li>
+          <li><a class="link" href="{% url 'contact' %}">Contacto</a></li>
             {% comment %} 
             {% if perms.administracion.administrador %}
             <li><a href="{% url 'inicio_administracion' %}">Administración</a></li>
             {% endif %} 
             {% endcomment %}
+            {% comment %} 
             {% if user.is_authenticated %}
             <li ><a class="link" href="{% url 'profile' %}">Perfil</a></li>
             <a href="{% url 'logout' %}">
@@ -70,7 +83,8 @@
             <a href="{% url 'login' %}">
               <button type="button" class="btn btn-primary">Ingresar</button>
             </a>
-            {% endif %}
+            {% endif %} 
+            {% endcomment %}
         </ul>
       </div>
 

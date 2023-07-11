@@ -4,10 +4,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {% block title %}{% endblock title %}
+  <title>
+  {% block title %}
+  {% endblock title %}
+  </title>
   <link rel="shortcut icon" type="image/png" href="{% static 'administracion/assets/images/logos/favicon.png' %}" />
-  <link rel="stylesheet" href="{% static 'administracion/assets/css/styles.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'administracion/assets/css/styles.min.css' %}?v={% now 'U'%}" />
   {% block scripts %}{% endblock scripts %}
+  {# fontawesome #}
+  <script src="{% static 'fontawesomefree/js/fontawesome.js' %}?v={% now 'U'%}"></script>
+  <script src="{% static 'fontawesomefree/js/solid.js' %}?v={% now 'U'%}"></script>
+  <script src="{% static 'fontawesomefree/js/brands.js' %}?v={% now 'U'%}"></script>
 </head>
 
 <body>
@@ -46,45 +53,45 @@
               <span class="hide-menu">CRUD Proyects</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
+              <a class="sidebar-link" href="{% url 'proyectos_index' %}" aria-expanded="false">
                 <span>
                   <i class="ti ti-article"></i>
                 </span>
-                <span class="hide-menu">Buttons</span>
+                <span class="hide-menu">Proyectos</span>
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
+              <a class="sidebar-link" href="{% url 'etiquetas_index' %}" aria-expanded="false">
                 <span>
                   <i class="ti ti-alert-circle"></i>
                 </span>
-                <span class="hide-menu">Alerts</span>
+                <span class="hide-menu">Etiquetas</span>
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
+              <a class="sidebar-link" href="{% url 'categorias_index' %}" aria-expanded="false">
                 <span>
                   <i class="ti ti-cards"></i>
                 </span>
-                <span class="hide-menu">Card</span>
+                <span class="hide-menu">Categorías</span>
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
+              <a class="sidebar-link" href="{% url 'pro_tag_index' %}" aria-expanded="false">
                 <span>
                   <i class="ti ti-file-description"></i>
                 </span>
-                <span class="hide-menu">Forms</span>
+                <span class="hide-menu">Etiquetas Proyectos</span>
               </a>
             </li>
-            <li class="sidebar-item">
+            {% comment %} <li class="sidebar-item">
               <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
                 <span>
                   <i class="ti ti-typography"></i>
                 </span>
                 <span class="hide-menu">Typography</span>
               </a>
-            </li>
+            </li> {% endcomment %}
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">AUTH</span>
@@ -141,7 +148,7 @@
                       <i class="ti ti-mail fs-6"></i>
                       <p class="mb-0 fs-3">Cuenta</p>
                     </a>
-                    <a href="./authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                    <a href="{% url 'logout' %}" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                   </div>
                 </div>
               </li>
@@ -154,11 +161,10 @@
     </div>
   </div>
   {% block extra_js %}{% endblock extra_js %}
-  <script src="{% static 'administracion/assets/libs/jquery/dist/jquery.min.js' %}"></script>
-  <script src="{% static 'administracion/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
-  <script src="{% static 'administracion/assets/js/sidebarmenu.js' %}"></script>
-  <script src="{% static 'administracion/assets/js/app.min.js' %}"></script>
-  <script src="{% static 'administracion/assets/js/dashboard.js' %}"></script>
+  <script src="{% static 'administracion/assets/libs/jquery/dist/jquery.min.js' %}?v={% now 'U'%}"></script>
+  <script src="{% static 'administracion/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js' %}?v={% now 'U'%}"></script>
+  <script src="{% static 'administracion/assets/js/sidebarmenu.js' %}?v={% now 'U'%}"></script>
+  <script src="{% static 'administracion/assets/js/app.min.js' %}?v={% now 'U'%}"></script>
 </body>
 
 </html>
