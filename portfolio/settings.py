@@ -167,7 +167,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 # Login URL
-LOGIN_URL = 'sign'
+LOGIN_URL = 'login'
 
 # Logout URL
 LOGOUT_URL = 'logout'

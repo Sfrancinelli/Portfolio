@@ -1,16 +1,24 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from administracion.forms import SignUpForm, LoginForm, NewPassForm, VerifyCodeForm, ForgotPass
 from django.contrib import messages
 from django.contrib.auth import logout, authenticate
 from django.contrib.auth import login as auth_login
+from django.contrib.auth.models import User, Permission
 from django.http import HttpResponse
 from projects.models import Project, Tag, ProjectTag, Category
 from administracion.forms import ProyectoForm, EtiquetaForm, CategoriaForm, ProjectTagForm
 from django.core.files.storage import default_storage
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required, user_passes_test
+
+
+def staff_required(view_func):
+    decorated_view_func = login_required(user_passes_test(lambda user: user.is_staff)(view_func))
+    return decorated_view_func
 
 
 # Create your views here.
+@staff_required
 def index_administracion(request):
     return render(request, 'administracion/index.html')
 
@@ -61,11 +69,13 @@ def profile(request):
 
 
 # Proyectos
+@staff_required
 def proyectos_index(request):
     proyectos = Project.objects.all()
     return render(request, 'administracion/CRUD/Proyectos/index.html', {'proyectos': proyectos})
 
 
+@staff_required
 def proyectos_nuevo(request):
     if request.method == 'POST':
         formulario = ProyectoForm(request.POST, request.FILES)
@@ -77,6 +87,7 @@ def proyectos_nuevo(request):
     return render(request, 'administracion/CRUD/Proyectos/new.html', {'form': formulario})
 
 
+@staff_required
 def proyectos_editar(request, id):
     try:
         proyecto = Project.objects.get(pk=id)
@@ -104,6 +115,7 @@ def proyectos_editar(request, id):
     return render(request, 'administracion/CRUD/Proyectos/edit.html', {'form': formulario})
 
 
+@staff_required
 def proyectos_eliminar(request, id):
     try:
         proyecto = Project.objects.get(pk=id)
@@ -115,6 +127,7 @@ def proyectos_eliminar(request, id):
     return redirect('proyectos_index')
 
 
+@staff_required
 def proyectos_buscar(request):
     nombre = request.GET.get('nombre')
 
@@ -124,11 +137,13 @@ def proyectos_buscar(request):
 
 
 # Etiquetas
+@staff_required
 def etiquetas_index(request):
     etiquetas = Tag.objects.all()
     return render(request, 'administracion/CRUD/Etiquetas/index.html', {'etiquetas': etiquetas})
 
 
+@staff_required
 def etiquetas_nuevo(request):
     if request.method == 'POST':
         formulario = EtiquetaForm(request.POST)
@@ -140,6 +155,7 @@ def etiquetas_nuevo(request):
     return render(request, 'administracion/CRUD/Etiquetas/new.html', {'form': formulario})
 
 
+@staff_required
 def etiquetas_editar(request, id):
     try:
         etiquetas = Tag.objects.get(pk=id)
@@ -161,6 +177,7 @@ def etiquetas_editar(request, id):
     return render(request, 'administracion/CRUD/Etiquetas/edit.html', {'form': formulario})
 
 
+@staff_required
 def etiquetas_eliminar(request, id):
     try:
         etiquetas = Tag.objects.get(pk=id)
@@ -171,6 +188,7 @@ def etiquetas_eliminar(request, id):
     return redirect('etiquetas_index')
 
 
+@staff_required
 def etiquetas_buscar(request):
     nombre = request.GET.get('nombre')
 
@@ -180,11 +198,13 @@ def etiquetas_buscar(request):
 
 
 # Categorías
+@staff_required
 def categorias_index(request):
     categorias = Category.objects.all()
     return render(request, 'administracion/CRUD/Categorias/index.html', {'categorias': categorias})
 
 
+@staff_required
 def categorias_nuevo(request):
     if request.method == 'POST':
         formulario = CategoriaForm(request.POST)
@@ -196,6 +216,7 @@ def categorias_nuevo(request):
     return render(request, 'administracion/CRUD/Categorias/new.html', {'form': formulario})
 
 
+@staff_required
 def categorias_editar(request, id):
     try:
         categorias = Category.objects.get(pk=id)
@@ -217,6 +238,7 @@ def categorias_editar(request, id):
     return render(request, 'administracion/CRUD/Categorias/edit.html', {'form': formulario})
 
 
+@staff_required
 def categorias_eliminar(request, id):
     try:
         categorias = Category.objects.get(pk=id)
@@ -227,6 +249,7 @@ def categorias_eliminar(request, id):
     return redirect('categorias_index')
 
 
+@staff_required
 def categorias_buscar(request):
     nombre = request.GET.get('nombre')
 
@@ -236,11 +259,13 @@ def categorias_buscar(request):
 
 
 # Proyecto-Etiquetas
+@staff_required
 def pro_tag_index(request):
     pro_tags = ProjectTag.objects.all()
     return render(request, 'administracion/CRUD/Eti-Pro/index.html', {'pro_tags': pro_tags})
 
 
+@staff_required
 def pro_tag_nuevo(request):
     if request.method == 'POST':
         formulario = ProjectTagForm(request.POST)
@@ -252,6 +277,7 @@ def pro_tag_nuevo(request):
     return render(request, 'administracion/CRUD/Eti-Pro/new.html', {'form': formulario})
 
 
+@staff_required
 def pro_tag_editar(request, id):
     try:
         pro_tags = ProjectTag.objects.get(pk=id)
@@ -273,6 +299,7 @@ def pro_tag_editar(request, id):
     return render(request, 'administracion/CRUD/Eti-Pro/edit.html', {'form': formulario})
 
 
+@staff_required
 def pro_tag_eliminar(request, id):
     try:
         pro_tags = ProjectTag.objects.get(pk=id)
@@ -283,6 +310,7 @@ def pro_tag_eliminar(request, id):
     return redirect('pro_tag_index')
 
 
+@staff_required
 def pro_tag_buscar(request):
     nombre = request.GET.get('nombre')
 
@@ -291,3 +319,14 @@ def pro_tag_buscar(request):
     )
 
     return render(request, 'administracion/CRUD/Eti-Pro/index.html', {'pro_tags': pro_tags})
+
+
+@login_required
+def give_staff(request, user_id):
+
+    user = get_object_or_404(User, id=user_id)
+    user.is_superuser = True
+    user.save()
+
+    messages.success(request, 'Permiso de super-user obtenido.')
+    return redirect('index')
