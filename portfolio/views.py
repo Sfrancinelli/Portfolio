@@ -15,7 +15,7 @@ from projects.forms import ContactForm
 
 def index(request):
     projects = Project.objects.all()
-    return render(request, 'pages/index.html', {'title': 'Title', 'projects': projects})
+    return render(request, 'pages/index.html', {'title': 'Proyectos', 'projects': projects})
 
 
 def projects(request, id):
